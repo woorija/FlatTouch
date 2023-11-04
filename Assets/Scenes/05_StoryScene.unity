@@ -219,7 +219,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2040589049}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: Move_Left
+          m_MethodName: MoveLeft
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -235,7 +235,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2040589049}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: Stop_Move
+          m_MethodName: StopMove
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1083,11 +1083,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712e1053b928e5f428368036e4804024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayableModeObject:
-  - {fileID: 980062623}
+  playableModeObjects:
   - {fileID: 1387985901}
-  PauseUI: {fileID: 1046171680}
-  bgchanger: {fileID: 1037794338}
+  pauseUI: {fileID: 1046171680}
+  bgChanger: {fileID: 1037794338}
   dialogueManager: {fileID: 1863790360}
 --- !u!4 &994497495
 Transform:
@@ -2152,7 +2151,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 994497494}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
-        m_MethodName: SceneMove_Menu
+        m_MethodName: SceneMoveMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2346,7 +2345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19311dd52aa1f64c8dcc67ccd006193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storymanager: {fileID: 994497494}
+  storyManager: {fileID: 994497494}
 --- !u!114 &1548406025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2359,7 +2358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148d28409b6edd9429724da598c39af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stand_pos: {x: 3200, y: -900, z: 0}
+  standPos: {x: 3200, y: -900, z: 0}
   index: 0
 --- !u!1 &1574334265
 GameObject:
@@ -2799,8 +2798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a47c173b2db3d45aa7ed70fba713a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue_text: {fileID: 1280370630}
-  charactername_text: {fileID: 1636820057}
+  dialogueText: {fileID: 1280370630}
+  characternameText: {fileID: 1636820057}
 --- !u!114 &1950269896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,8 +2812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83659d3bcb47464eb61c4e1e63aed56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portrait_left: {fileID: 1517412409}
-  portrait_right: {fileID: 1182183341}
+  leftPortrait: {fileID: 1517412409}
+  rightPortrait: {fileID: 1182183341}
   magicUI: {fileID: 2130903541}
 --- !u!1 &1988217550
 GameObject:
@@ -3000,7 +2999,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2040589049}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: Move_Right
+          m_MethodName: MoveRight
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3016,7 +3015,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2040589049}
           m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-          m_MethodName: Stop_Move
+          m_MethodName: StopMove
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

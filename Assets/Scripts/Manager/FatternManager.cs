@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 public class FatternManager : MonoBehaviour
 {
@@ -9,20 +8,20 @@ public class FatternManager : MonoBehaviour
     [SerializeField] FatternUI fatternUI;
 
     [SerializeField] Fattern[] fatterns;
-    [SerializeField] Fattern dummyfattern;
-    List<Fattern> usingfattern;
-    List<int> usingfatternprobablilty;
+    [SerializeField] Fattern dummyFattern;
+    List<Fattern> usingFatterns;
+    List<int> usingFatternsProbablilty;
     [SerializeField] Flats flats;
 
 
-    Fattern current_fattern;
-    Fattern next_fattern;
+    Fattern currentFattern;
+    Fattern nextFattern;
 
-    public float fatterntimer { get; private set; }
+    public float fatternTimer { get; private set; }
     private void Awake()
     {
-        usingfattern = new List<Fattern>();
-        usingfatternprobablilty= new List<int>();
+        usingFatterns = new List<Fattern>();
+        usingFatternsProbablilty = new List<int>();
     }
     public void FatternInit()
     {
@@ -32,67 +31,67 @@ public class FatternManager : MonoBehaviour
         FirstFatternSetting();
     }
     public float GetTimer() {
-        fatterntimer = current_fattern.GetTimer();
-        return fatterntimer;
+        fatternTimer = currentFattern.GetTimer();
+        return fatternTimer;
     }
     void UseFatternSetting() // 스테이지별 사용하는 패턴 세팅해두기
     {
-        bool[] usefattern = StageDB.stage_data[GameManager.Instance.currentstage].Usefattern;
-        for (int i=0;i<usefattern.Length;i++)
+        bool[] isUseFatterns = StageDB.stageData[GameManager.Instance.currentStage].useFatterns;
+        for (int i=0;i< isUseFatterns.Length;i++)
         {
-            if (usefattern[i])
+            if (isUseFatterns[i])
             {
-                usingfattern.Add(fatterns[i]);
-                usingfatternprobablilty.Add(StageDB.probability_data[GameManager.Instance.currentstage].Fattern_probability[i]);
+                usingFatterns.Add(fatterns[i]);
+                usingFatternsProbablilty.Add(StageDB.probabilityData[GameManager.Instance.currentStage].fatternsProbability[i]);
             }
         }
-        for(int i = 0; i < usingfattern.Count; i++)
+        for(int i = 0; i < usingFatterns.Count; i++)
         {
-            usingfattern[i].GetManagers();
+            usingFatterns[i].GetManagers();
         }
-        dummyfattern.GetManagers();
+        dummyFattern.GetManagers();
     }
     void FirstFatternSetting() // 첫패턴은 더미패턴
     {
-        current_fattern = dummyfattern;
+        currentFattern = dummyFattern;
         fatternUI.SetDummyFatternUI();
 
         SelectNextFattern();
-        fatternUI.SetNextFatternUI(next_fattern.GetIndex());
+        fatternUI.SetNextFatternUI(nextFattern.GetIndex());
     }
     public void StartFattern()
     {
-        current_fattern.StartFattern();
+        currentFattern.StartFattern();
     }
     public void ChangeFattern() // 더미 이후 매 패턴 변경
     {
-        current_fattern.ExitFattern(); // 현재 패턴 종료
-        StartCoroutine(ChangeAnimationPlay());
+        currentFattern.ExitFattern(); // 현재 패턴 종료
+        StartCoroutine(ChangeAnimationPlayCoroutine());
 
-        current_fattern = next_fattern;
+        currentFattern = nextFattern;
         fatternUI.SetCurrentFatternUI();
 
         SelectNextFattern();
-        fatternUI.SetNextFatternUI(next_fattern.GetIndex());
+        fatternUI.SetNextFatternUI(nextFattern.GetIndex());
 
-        current_fattern.StartFattern();
+        currentFattern.StartFattern();
     }
 
     void SelectNextFattern() // 확률에 의거한 다음 패턴 결정 함수
     {
         int _random = Random.Range(0, 100);
         int probablilty = 0;
-        for(int i=0;i<usingfattern.Count;i++)
+        for(int i=0;i<usingFatterns.Count;i++)
         {
-            probablilty += usingfatternprobablilty[i];
+            probablilty += usingFatternsProbablilty[i];
             if(_random < probablilty)
             {
-                next_fattern = usingfattern[i];
+                nextFattern = usingFatterns[i];
                 break;
             }
         }
     }
-    IEnumerator ChangeAnimationPlay() // 패턴 변경때마다 전 플랫 애니메이션 플레이
+    IEnumerator ChangeAnimationPlayCoroutine() // 패턴 변경때마다 전 플랫 애니메이션 플레이
     {
         GameManager.Instance.TouchLock();
         flats.PlayAnimation();
@@ -102,7 +101,7 @@ public class FatternManager : MonoBehaviour
 
     public void InputAnswer(int _num)
     {
-        current_fattern.InputAnswer(_num);
+        currentFattern.InputAnswer(_num);
     }
     #region tutorial
     public void TutorialFatternInit()
@@ -114,22 +113,22 @@ public class FatternManager : MonoBehaviour
     }
     void TutorialFirstFatternSetting() // 첫패턴은 더미패턴
     {
-        current_fattern = dummyfattern;
+        currentFattern = dummyFattern;
         fatternUI.SetDummyFatternUI();
 
-        next_fattern = fatterns[0];
-        fatternUI.SetNextFatternUI(next_fattern.GetIndex());
+        nextFattern = fatterns[0];
+        fatternUI.SetNextFatternUI(nextFattern.GetIndex());
     }
     public void ChangeFattern(int _index)
     {
-        current_fattern.ExitFattern(); // 현재 패턴 종료
+        currentFattern.ExitFattern(); // 현재 패턴 종료
         flats.PlayAnimation();
 
-        current_fattern = fatterns[_index];
-        next_fattern = fatterns[_index];
-        fatternUI.SetNextFatternUI(next_fattern.GetIndex());
+        currentFattern = fatterns[_index];
+        nextFattern = fatterns[_index];
+        fatternUI.SetNextFatternUI(nextFattern.GetIndex());
         fatternUI.SetCurrentFatternUI();
-        current_fattern.StartFattern_tuto();
+        currentFattern.StartTutorialFattern();
     }
 
 

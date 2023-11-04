@@ -7,25 +7,25 @@ public class DummyFattern : Fattern
     protected override void Start()
     {
         base.Start();
-        fatterntimer = 3f;
+        fatternTimer = 3f;
     }
     public override void StartFattern()
     {
-        scoreManager.Set_text("3");
+        scoreManager.SetText("3");
         ColorChange();
         StartCoroutine(Count());
     }
     public override void ExitFattern()
     {
-        scoreManager.Set_text("0");
+        scoreManager.SetText("0");
     }
 
     public override void ColorChange()
     {
         for (int i = 0; i < flats.flat.Length; i++)
         {
-            flats.flat[i].ColorChange(colorDB.Start_color);
-            effectManager.flatEffect[i].PlayEffect();
+            flats.flat[i].ColorChange(colorDB.StartColor);
+            effectManager.flatEffects[i].PlayEffect();
         }
     }
     void ColorChange(Color _color)
@@ -45,10 +45,10 @@ public class DummyFattern : Fattern
     IEnumerator Count()
     {
         yield return YieldCache.WaitForSeconds(1.0f);
-        scoreManager.Set_text("2");
-        ColorChange(colorDB.Good_color);
+        scoreManager.SetText("2");
+        ColorChange(colorDB.GoodColor);
         yield return YieldCache.WaitForSeconds(1.0f);
-        scoreManager.Set_text("1");
-        ColorChange(colorDB.Perfect_color);
+        scoreManager.SetText("1");
+        ColorChange(colorDB.PerfectColor);
     }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class OneColorFattern : Fattern
 {
-    Coroutine Co_touched;
+    Coroutine touchCheckCoroutine;
     protected override void Start()
     {
         base.Start();
-        fatterntimer = 60f / StageDB.stage_data[GameManager.Instance.currentstage].bpm;
-        answer = new List<int>(2);
-        right_answer = new List<int>(2) { 0, 0 };
+        fatternTimer = 60f / StageDB.stageData[GameManager.Instance.currentStage].bpm;
+        answers = new List<int>(2);
+        rightAnswers = new List<int>(2) { 0, 0 };
     }
     public override void StartFattern()
     {
@@ -18,12 +18,12 @@ public class OneColorFattern : Fattern
         AnswerChange();
         ColorChange();
     }
-    public override void StartFattern_tuto()
+    public override void StartTutorialFattern()
     {
-        base.StartFattern_tuto();
-        answer.Clear();
-        right_answer[0] = 0;
-        right_answer[1] = 7;
+        base.StartTutorialFattern();
+        answers.Clear();
+        rightAnswers[0] = 0;
+        rightAnswers[1] = 7;
         ColorChange();
     }
     public override void ExitFattern()
@@ -52,19 +52,19 @@ public class OneColorFattern : Fattern
 
     public override void AnswerChange()
     {
-        answer.Clear();
+        answers.Clear();
         shuffle();
-        for (int i = 0; i < right_answer.Count; i++)
+        for (int i = 0; i < rightAnswers.Count; i++)
         {
-            right_answer[i] = random_index[i];
+            rightAnswers[i] = randomIndex[i];
         }
     }
     public override void InputAnswer(int _num)
     {
         bool check = true;
-        for (int i = 0; i < answer.Count; i++)
+        for (int i = 0; i < answers.Count; i++)
         {
-            if (_num == answer[i])
+            if (_num == answers[i])
             {
                 check = false;
                 break;
@@ -72,29 +72,29 @@ public class OneColorFattern : Fattern
         }
         if (check) // 중복체크 통과시만 정답에 추가
         {
-            if (Co_touched == null)
+            if (touchCheckCoroutine == null)
             {
-                Co_touched = StartCoroutine(Co_touchtime());
+                touchCheckCoroutine = StartCoroutine(OverTouchTimeCoroutine());
             }
-            answer.Add(_num);
+            answers.Add(_num);
             SortAnswer();
         }
     }
     void SortAnswer()
     {
-        if (answer.Count == right_answer.Count)
+        if (answers.Count == rightAnswers.Count)
         {
-            answer.Sort();
-            right_answer.Sort();
+            answers.Sort();
+            rightAnswers.Sort();
             AnswerCheck();
         }
     }
     void AnswerCheck()
     {
         bool check = true;
-        for (int i = 0; i < right_answer.Count; i++)
+        for (int i = 0; i < rightAnswers.Count; i++)
         {
-            if (answer[i] != right_answer[i]) // 정답과 플레이어가 고른 답이 다를경우
+            if (answers[i] != rightAnswers[i]) // 정답과 플레이어가 고른 답이 다를경우
             {
                 check = false;
                 break;
@@ -103,44 +103,44 @@ public class OneColorFattern : Fattern
         if (!check)
         {
             StopTouchcheck();
-            flats.ChangeAllColor(colorDB.Miss_color);
+            flats.ChangeAllColor(colorDB.MissColor);
             SetDecision(Decision.MISS);
         }
         else // 정답인 경우
         {
-            TutorialManager.fattern_clear = true;
+            TutorialManager.isFatternClear = true;
             PlayAllFlatEffect();
-            if (StageManager.fatterntimer / fatterntimer <= 0.25f)
+            if (StageManager.fatternTimer / fatternTimer <= 0.25f)
             {
                 SetDecision(Decision.PERPECT);
-                flats.ChangeAllColor(colorDB.Perfect_color);
+                flats.ChangeAllColor(colorDB.PerfectColor);
             }
-            else if (StageManager.fatterntimer / fatterntimer <= 0.5f)
+            else if (StageManager.fatternTimer / fatternTimer <= 0.5f)
             {
                 SetDecision(Decision.GOOD);
-                flats.ChangeAllColor(colorDB.Good_color);
+                flats.ChangeAllColor(colorDB.GoodColor);
             }
             else
             {
                 SetDecision(Decision.EARLY);
-                flats.ChangeAllColor(colorDB.Miss_color);
+                flats.ChangeAllColor(colorDB.MissColor);
             }
             StopTouchcheck();
         }
     }
-    IEnumerator Co_touchtime()
+    IEnumerator OverTouchTimeCoroutine()
     {
         yield return YieldCache.WaitForSeconds(0.2f);
         GameManager.Instance.TouchLock();
-        flats.ChangeAllColor(colorDB.Miss_color);
+        flats.ChangeAllColor(colorDB.MissColor);
         SetDecision(Decision.MISS);
     }
     void StopTouchcheck()
     {
-        if (Co_touched != null)
+        if (touchCheckCoroutine != null)
         {
-            StopCoroutine(Co_touched);
-            Co_touched = null;
+            StopCoroutine(touchCheckCoroutine);
+            touchCheckCoroutine = null;
         }
     }
     protected override void SetDecision(Decision _decision)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FadeObjectController : MonoBehaviour
 {
-    [SerializeField] GameObject[] FadeObject;
+    [SerializeField] GameObject[] FadeObjects;
     /*    FadeObject 인덱스
      *    0:스코어
      *    1:현재패턴,다음패턴
@@ -20,11 +20,11 @@ public class FadeObjectController : MonoBehaviour
      */
     void SetActiveTrue(int _index)
     {
-        FadeObject[_index].SetActive(true);
+        FadeObjects[_index].SetActive(true);
     }
     void SetActiveFalse(int _index)
     {
-        FadeObject[_index].SetActive(false);
+        FadeObjects[_index].SetActive(false);
     }
 
     public void SetActiveObject(int _index)

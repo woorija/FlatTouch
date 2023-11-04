@@ -83,38 +83,38 @@ SpriteAtlas:
   - {fileID: -1864843574, guid: 205ab6ae332948941a1bf809c521136a, type: 3}
   - {fileID: -1607392061, guid: 6849cfcee107ed2488b3bbafb0857856, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Witch_emote10
-  - Player_emote3
-  - King_emote3
-  - Witch_emote8
-  - Raccoon_emote1
-  - Player_emote1
-  - Player_emote7
-  - King_emote4
+  - Witch_Emote10
+  - Player_Emote3
+  - King_Emote3
+  - Witch_Emote8
+  - Raccoon_Emote1
+  - Player_Emote1
+  - Player_Emote7
+  - King_Emote4
   - "\uD45C\uC885 \uC790\uC138. \uAD81\uAE08_1"
-  - Player_emote8
-  - Rabbit_emote1
-  - Player_emote5
-  - Rabbit_emote4
-  - Witch_emote2
-  - Player_emote4
-  - Raccoon_emote3
-  - Witch_emote1
-  - King_emote2
-  - Witch_emote7
-  - Witch_emote4
-  - Witch_emote3
-  - Player_emote2
-  - Rabbit_emote3
-  - Witch_emote6
-  - King_emote1
-  - Witch_emote9
-  - Player_emote9
-  - Rabbit_emote5
-  - Witch_emote5
-  - Player_emote6
-  - Rabbit_emote2
-  - Raccoon_emote2
+  - Player_Emote8
+  - Rabbit_Emote1
+  - Player_Emote5
+  - Rabbit_Emote4
+  - Witch_Emote2
+  - Player_Emote4
+  - Raccoon_Emote3
+  - Witch_Emote1
+  - King_Emote2
+  - Witch_Emote7
+  - Witch_Emote4
+  - Witch_Emote3
+  - Player_Emote2
+  - Rabbit_Emote3
+  - Witch_Emote6
+  - King_Emote1
+  - Witch_Emote9
+  - Player_Emote9
+  - Rabbit_Emote5
+  - Witch_Emote5
+  - Player_Emote6
+  - Rabbit_Emote2
+  - Raccoon_Emote2
   m_RenderDataMap: {}
   m_Tag: Emote
   m_IsVariant: 0

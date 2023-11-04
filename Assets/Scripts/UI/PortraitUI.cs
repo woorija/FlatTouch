@@ -5,54 +5,54 @@ using UnityEngine.UI;
 
 public class PortraitUI : MonoBehaviour
 {
-    [SerializeField] Image portrait_left;
-    [SerializeField] Image portrait_right;
-    RectTransform portraitL_rt;
-    RectTransform portraitR_rt;
+    [SerializeField] Image leftPortrait;
+    [SerializeField] Image rightPortrait;
+    RectTransform leftPortraitRectTransform;
+    RectTransform rightPortraitRectTransform;
 
-    int portrait_number;
-    int emote_number;
+    int portraitNumber;
+    int emoteNumber;
 
     [SerializeField] MagicUI magicUI;
 
     private void Awake()
     {
-        portraitL_rt = portrait_left.rectTransform;
-        portraitR_rt = portrait_right.rectTransform;
+        leftPortraitRectTransform = leftPortrait.rectTransform;
+        rightPortraitRectTransform = rightPortrait.rectTransform;
     }
     public void GetPortrait(int _num)
     {
-        portrait_number = _num;
+        portraitNumber = _num;
     }
     public void GetEmote(int _num)
     {
-        emote_number = _num;
+        emoteNumber = _num;
     }
     public void PortraitSetting()
     {
-        switch (portrait_number)
+        switch (portraitNumber)
         {
             case 0:
-                portrait_left.gameObject.transform.SetSiblingIndex(2);
-                portraitR_rt.gameObject.transform.SetSiblingIndex(0);
+                leftPortrait.gameObject.transform.SetSiblingIndex(2);
+                rightPortraitRectTransform.gameObject.transform.SetSiblingIndex(0);
                 EmoteSetting();
-                StartCoroutine(PortraitL_Animation());
+                StartCoroutine(LeftPortraitAnimationCoroutine());
                 break;
             case 1:
             case 2:
             case 3:
             case 4:
-                portrait_left.gameObject.transform.SetSiblingIndex(0);
-                portraitR_rt.gameObject.transform.SetSiblingIndex(2);
+                leftPortrait.gameObject.transform.SetSiblingIndex(0);
+                rightPortraitRectTransform.gameObject.transform.SetSiblingIndex(2);
                 EmoteSetting();
-                StartCoroutine(PortraitR_Animation());
+                StartCoroutine(RightPortraitAnimationCoroutine());
                 break;
             case 5:
-                portrait_left.gameObject.transform.SetSiblingIndex(2);
-                portraitR_rt.gameObject.transform.SetSiblingIndex(2);
+                leftPortrait.gameObject.transform.SetSiblingIndex(2);
+                rightPortraitRectTransform.gameObject.transform.SetSiblingIndex(2);
                 EmoteSetting();
-                StartCoroutine(PortraitL_Animation());
-                StartCoroutine(PortraitR_Animation());
+                StartCoroutine(LeftPortraitAnimationCoroutine());
+                StartCoroutine(RightPortraitAnimationCoroutine());
                 break;
             case 6:
                 StartCoroutine(magicUI.MagicDialogue());
@@ -61,73 +61,73 @@ public class PortraitUI : MonoBehaviour
     }
     void EmoteSetting()
     {
-        switch (portrait_number)
+        switch (portraitNumber)
         {
             case 0: // 주인공
-                portraitL_rt.anchoredPosition = new Vector2(-300, -350);
-                portraitL_rt.sizeDelta = new Vector2(400, 800);
-                portrait_left.sprite = ResourceManager.GetSprite_to_atlas("Emote", $"Player_emote{emote_number + 1}");
+                leftPortraitRectTransform.anchoredPosition = new Vector2(-300, -350);
+                leftPortraitRectTransform.sizeDelta = new Vector2(400, 800);
+                leftPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", $"Player_Emote{emoteNumber + 1}");
                 break;
             case 1: // 토끼
-                portraitR_rt.anchoredPosition = new Vector2(270, -350);
-                portraitR_rt.sizeDelta = new Vector2(360, 830);
-                portrait_right.sprite = ResourceManager.GetSprite_to_atlas("Emote", $"Rabbit_emote{emote_number + 1}");
+                rightPortraitRectTransform.anchoredPosition = new Vector2(270, -350);
+                rightPortraitRectTransform.sizeDelta = new Vector2(360, 830);
+                rightPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", $"Rabbit_Emote{emoteNumber + 1}");
                 break;
             case 2: // 너구리
-                portraitR_rt.anchoredPosition = new Vector2(250, -370);
-                portraitR_rt.sizeDelta = new Vector2(440, 610);
-                portrait_right.sprite = ResourceManager.GetSprite_to_atlas("Emote", $"Raccoon_emote{emote_number + 1}");
+                rightPortraitRectTransform.anchoredPosition = new Vector2(250, -370);
+                rightPortraitRectTransform.sizeDelta = new Vector2(440, 610);
+                rightPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", $"Raccoon_Emote{emoteNumber + 1}");
                 break;
             case 3: // 왕
-                portraitR_rt.anchoredPosition = new Vector2(270, -300);
-                portraitR_rt.sizeDelta = new Vector2(670, 860);
-                portrait_right.sprite = ResourceManager.GetSprite_to_atlas("Emote", $"King_emote{emote_number + 1}");
+                rightPortraitRectTransform.anchoredPosition = new Vector2(270, -300);
+                rightPortraitRectTransform.sizeDelta = new Vector2(670, 860);
+                rightPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", $"King_Emote{emoteNumber + 1}");
                 break;
             case 4: // 마녀
-                portraitR_rt.anchoredPosition = new Vector2(250, -310);
-                portraitR_rt.sizeDelta = new Vector2(500, 770);
-                portrait_right.sprite = ResourceManager.GetSprite_to_atlas("Emote", $"Witch_emote{emote_number + 1}");
+                rightPortraitRectTransform.anchoredPosition = new Vector2(250, -310);
+                rightPortraitRectTransform.sizeDelta = new Vector2(500, 770);
+                rightPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", $"Witch_Emote{emoteNumber + 1}");
                 break;
             case 5: //엔딩전용
-                portraitL_rt.anchoredPosition = new Vector2(-280, -350);
-                portraitL_rt.sizeDelta = new Vector2(330, 820);
-                portraitR_rt.anchoredPosition = new Vector2(250, -370);
-                portraitR_rt.sizeDelta = new Vector2(440, 610);
-                portrait_left.sprite = ResourceManager.GetSprite_to_atlas("Emote", "Rabbit_emote5");
-                portrait_right.sprite = ResourceManager.GetSprite_to_atlas("Emote", "Raccoon_emote3");
+                leftPortraitRectTransform.anchoredPosition = new Vector2(-280, -350);
+                leftPortraitRectTransform.sizeDelta = new Vector2(330, 820);
+                rightPortraitRectTransform.anchoredPosition = new Vector2(250, -370);
+                rightPortraitRectTransform.sizeDelta = new Vector2(440, 610);
+                leftPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", "Rabbit_Emote5");
+                rightPortrait.sprite = ResourceManager.GetSpriteToAtlas("Emote", "Raccoon_Emote3");
                 break;
         }
     }
-    IEnumerator PortraitL_Animation()
+    IEnumerator LeftPortraitAnimationCoroutine()
     {
-        float increase_ypos = 5f;
+        float increasePosY = 5f;
         int count = 0;
         while (count < 5)
         {
-            portraitL_rt.anchoredPosition = new Vector2(portraitL_rt.anchoredPosition.x, portraitL_rt.anchoredPosition.y - increase_ypos);
+            leftPortraitRectTransform.anchoredPosition = new Vector2(leftPortraitRectTransform.anchoredPosition.x, leftPortraitRectTransform.anchoredPosition.y - increasePosY);
             count++;
             yield return YieldCache.WaitForSeconds(0.016f);
         }
         while (count < 10)
         {
-            portraitL_rt.anchoredPosition = new Vector2(portraitL_rt.anchoredPosition.x, portraitL_rt.anchoredPosition.y - increase_ypos);
+            leftPortraitRectTransform.anchoredPosition = new Vector2(leftPortraitRectTransform.anchoredPosition.x, leftPortraitRectTransform.anchoredPosition.y - increasePosY);
             count++;
             yield return YieldCache.WaitForSeconds(0.016f);
         }
     }
-    IEnumerator PortraitR_Animation()
+    IEnumerator RightPortraitAnimationCoroutine()
     {
-        float increase_ypos = 5f;
+        float increasePosY = 5f;
         int count = 0;
         while (count < 5)
         {
-            portraitR_rt.anchoredPosition = new Vector2(portraitR_rt.anchoredPosition.x, portraitR_rt.anchoredPosition.y - increase_ypos);
+            rightPortraitRectTransform.anchoredPosition = new Vector2(rightPortraitRectTransform.anchoredPosition.x, rightPortraitRectTransform.anchoredPosition.y - increasePosY);
             count++;
             yield return YieldCache.WaitForSeconds(0.016f);
         }
         while (count < 10)
         {
-            portraitR_rt.anchoredPosition = new Vector2(portraitR_rt.anchoredPosition.x, portraitR_rt.anchoredPosition.y - increase_ypos);
+            rightPortraitRectTransform.anchoredPosition = new Vector2(rightPortraitRectTransform.anchoredPosition.x, rightPortraitRectTransform.anchoredPosition.y - increasePosY);
             count++;
             yield return YieldCache.WaitForSeconds(0.016f);
         }

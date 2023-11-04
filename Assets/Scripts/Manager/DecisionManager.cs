@@ -14,26 +14,26 @@ public enum Decision
 }
 public class DecisionManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text decision_text;
+    [SerializeField] TMP_Text decisionText;
     // Start is called before the first frame update
-    public Decision current_decision { get; private set; }
-    Color decisiontext_color;
+    public Decision currentDecision { get; private set; }
+    Color decisionTextColor;
     Color[] decisionColor = new Color[4] { Color.blue, Color.green, Color.yellow, Color.red };
-    public void DecisionUpdate(Decision decision)
+    public void DecisionUpdate(Decision _decision)
     {
-        current_decision = decision;
-        StartCoroutine(Co_Decision_update(decision));
+        currentDecision = _decision;
+        StartCoroutine(DecisionUpdateCoroutine(_decision));
     }
-    IEnumerator Co_Decision_update(Decision decision)
+    IEnumerator DecisionUpdateCoroutine(Decision _decision)
     {
-        TextColorChange(decision);
-        decision_text.text = decision.ToString();
-        decision_text.color = decisiontext_color;
+        TextColorChange(_decision);
+        decisionText.text = _decision.ToString();
+        decisionText.color = decisionTextColor;
         yield return new WaitForSeconds(0.2f);
-        while (decisiontext_color.a > 0)
+        while (decisionTextColor.a > 0)
         {
-            decisiontext_color.a -= 0.05f;
-            decision_text.color = decisiontext_color;
+            decisionTextColor.a -= 0.05f;
+            decisionText.color = decisionTextColor;
             yield return null;
         }
     }
@@ -42,28 +42,28 @@ public class DecisionManager : MonoBehaviour
         switch (_dicision)
         {
             case Decision.PERPECT:
-                decisiontext_color = decisionColor[0];
+                decisionTextColor = decisionColor[0];
                 break;
             case Decision.GOOD:
-                decisiontext_color = decisionColor[1];
+                decisionTextColor = decisionColor[1];
                 break;
             case Decision.EARLY:
             case Decision.LATE:
-                decisiontext_color = decisionColor[2];
+                decisionTextColor = decisionColor[2];
                 break;
             case Decision.MISS:
-                decisiontext_color = decisionColor[3];
+                decisionTextColor = decisionColor[3];
                 break;
         }
     }
-    public void CurrentdecisionInit()
+    public void CurrentDecisionInit()
     {
-        current_decision = Decision.NONE;
+        currentDecision = Decision.NONE;
     }
 
-    public void Decision_Init()
+    public void DecisionInit()
     {
-        decisiontext_color.a = 0;
-        decision_text.color = decisiontext_color;
+        decisionTextColor.a = 0;
+        decisionText.color = decisionTextColor;
     }
 }

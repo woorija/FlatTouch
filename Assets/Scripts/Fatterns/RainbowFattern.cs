@@ -9,9 +9,9 @@ public class RainbowFattern : Fattern
     protected override void Start()
     {
         base.Start();
-        fatterntimer = 120f / StageDB.stage_data[GameManager.Instance.currentstage].bpm;
-        answer = new List<int>(7);
-        right_answer = new List<int>(7) { 0, 1, 2, 3, 4, 5, 6 };
+        fatternTimer = 120f / StageDB.stageData[GameManager.Instance.currentStage].bpm;
+        answers = new List<int>(7);
+        rightAnswers = new List<int>(7) { 0, 1, 2, 3, 4, 5, 6 };
     }
 
     public override void StartFattern()
@@ -21,20 +21,20 @@ public class RainbowFattern : Fattern
         AnswerChange();
         ColorChange();
     }
-    public override void StartFattern_tuto()
+    public override void StartTutorialFattern()
     {
         count = 0;
-        base.StartFattern_tuto();
-        answer.Clear();
-        random_index[0] = right_answer[0] = 3;
-        random_index[1] = right_answer[1] = 4;
-        random_index[2] = right_answer[2] = 1;
-        random_index[3] = right_answer[3] = 7;
-        random_index[4] = right_answer[4] = 0;
-        random_index[5] = right_answer[5] = 2;
-        random_index[6] = right_answer[6] = 5;
-        random_index[7] = 8;
-        random_index[8] = 6;
+        base.StartTutorialFattern();
+        answers.Clear();
+        randomIndex[0] = rightAnswers[0] = 3;
+        randomIndex[1] = rightAnswers[1] = 4;
+        randomIndex[2] = rightAnswers[2] = 1;
+        randomIndex[3] = rightAnswers[3] = 7;
+        randomIndex[4] = rightAnswers[4] = 0;
+        randomIndex[5] = rightAnswers[5] = 2;
+        randomIndex[6] = rightAnswers[6] = 5;
+        randomIndex[7] = 8;
+        randomIndex[8] = 6;
         ColorChange();
     }
     public override void ExitFattern()
@@ -47,25 +47,25 @@ public class RainbowFattern : Fattern
         decisionObject.ColorChange(colorDB.RainbowColorList[count]);
         for (int i = 0; i < flats.flat.Length; i++)
         {
-            flats.flat[random_index[i]].ColorChange(colorDB.RainbowColorList[i]);
+            flats.flat[randomIndex[i]].ColorChange(colorDB.RainbowColorList[i]);
         }
     }
 
     public override void AnswerChange()
     {
-        answer.Clear();
+        answers.Clear();
         shuffle();
-        for (int i = 0; i < right_answer.Count; i++)
+        for (int i = 0; i < rightAnswers.Count; i++)
         {
-            right_answer[i] = random_index[i];
+            rightAnswers[i] = randomIndex[i];
         }
     }
     public override void InputAnswer(int _num)
     {
         bool check = true;
-        for (int i = 0; i < answer.Count; i++)
+        for (int i = 0; i < answers.Count; i++)
         {
-            if (_num == answer[i])
+            if (_num == answers[i])
             {
                 check = false;
                 break;
@@ -73,9 +73,9 @@ public class RainbowFattern : Fattern
         }
         if (check) // 중복체크 통과시만 정답에 추가
         {
-            if (answer.Count <= 6)
+            if (answers.Count <= 6)
             {
-                answer.Add(_num);
+                answers.Add(_num);
                 AnswerCheck();
                 count++;
             }
@@ -84,13 +84,13 @@ public class RainbowFattern : Fattern
     void AnswerCheck()
     {
         bool check = true;
-        if (answer[count] != right_answer[count])
+        if (answers[count] != rightAnswers[count])
         {
             check= false;
         }
         if (!check)
         {
-            flats.ChangeAllColor(colorDB.Miss_color);
+            flats.ChangeAllColor(colorDB.MissColor);
             SetDecision(Decision.MISS);
         }
         else // 정답인 경우
@@ -98,21 +98,21 @@ public class RainbowFattern : Fattern
             PlayFlatEffect(count);
             if (count == 6)
             {
-                TutorialManager.fattern_clear = true;
-                if (StageManager.fatterntimer / fatterntimer >= 0.2f)
+                TutorialManager.isFatternClear = true;
+                if (StageManager.fatternTimer / fatternTimer >= 0.2f)
                 {
                     SetDecision(Decision.PERPECT);
-                    flats.ChangeAllColor(colorDB.Perfect_color);
+                    flats.ChangeAllColor(colorDB.PerfectColor);
                 }
-                else if (StageManager.fatterntimer / fatterntimer >= 0.05f)
+                else if (StageManager.fatternTimer / fatternTimer >= 0.05f)
                 {
                     SetDecision(Decision.GOOD);
-                    flats.ChangeAllColor(colorDB.Good_color);
+                    flats.ChangeAllColor(colorDB.GoodColor);
                 }
                 else
                 {
                     SetDecision(Decision.LATE);
-                    flats.ChangeAllColor(colorDB.Miss_color);
+                    flats.ChangeAllColor(colorDB.MissColor);
                 }
             }
             else

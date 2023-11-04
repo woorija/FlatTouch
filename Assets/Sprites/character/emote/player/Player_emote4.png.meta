@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_emote4
+      name: Player_Emote4
       rect:
         serializedVersion: 2
         x: 413
@@ -148,6 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Player_Emote4: 923865964
       "\uB180\uB78C_0": 923865964
   spritePackingTag: 
   pSDRemoveMatte: 0

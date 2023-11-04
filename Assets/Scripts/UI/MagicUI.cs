@@ -8,11 +8,11 @@ public class MagicUI : MonoBehaviour
     Image Magic;
     [SerializeField]
     Image MagicBG;
-    RectTransform BG_rt;
+    RectTransform BG_rectTransform;
     Color MagicAlpha;
     private void Awake()
     {
-        BG_rt = MagicBG.rectTransform;
+        BG_rectTransform = MagicBG.rectTransform;
     }
     public IEnumerator MagicDialogue()
     {
@@ -30,7 +30,7 @@ public class MagicUI : MonoBehaviour
         float timer = 0f;
         while (timer < 1.5f)
         {
-            BG_rt.anchoredPosition += Vector2.right * Random.Range(-4, 5);
+            BG_rectTransform.anchoredPosition += Vector2.right * Random.Range(-4, 5);
             timer += Time.deltaTime;
             yield return null;
         }

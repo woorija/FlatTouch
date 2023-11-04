@@ -6,10 +6,10 @@ public class TutorialManager : StageManager
 {
     [SerializeField] TutorialDialoguePlayer DialoguePlayer;
 
-    public static int tutorial_index;
-    public static bool tutorial_play;
-    int fattern_index = 0;
-    public static bool fattern_clear = false;
+    public static int tutorialIndex;
+    public static bool isTutorialPlay;
+    int fatternIndex = 0;
+    public static bool isFatternClear = false;
     private void Awake()
     {
         GameManager.Instance.ChangeStage(0);
@@ -21,7 +21,7 @@ public class TutorialManager : StageManager
     protected override void Update()
     {
         IndexCheck();
-        switch (tutorial_index)
+        switch (tutorialIndex)
         {
             case 2:
             case 4:
@@ -35,10 +35,10 @@ public class TutorialManager : StageManager
     }
     void IndexCheck()
     {
-        if (tutorial_play)
+        if (isTutorialPlay)
         {
-            tutorial_play = false;
-            switch (tutorial_index)
+            isTutorialPlay = false;
+            switch (tutorialIndex)
             {
                 case 0:
                     TutorialStart();
@@ -61,7 +61,7 @@ public class TutorialManager : StageManager
                 case 10:
                 case 12:
                     GameManager.Instance.TouchUnlock();
-                    fattern_clear = false;
+                    isFatternClear = false;
                     break;
                 case 5:
                     GameManager.Instance.TouchLock();
@@ -89,35 +89,35 @@ public class TutorialManager : StageManager
             }
         }
     }
-    protected override void timecheck()
+    protected override void Timecheck()
     {
-        fatterntimer -= Time.deltaTime;
-        timerbar.TimerbarUpdate(1 - (fatterntimer / fatternManager.GetTimer()));
-        if (fatterntimer <= 0f)
+        fatternTimer -= Time.deltaTime;
+        timerbar.TimerbarUpdate(1 - (fatternTimer / fatternManager.GetTimer()));
+        if (fatternTimer <= 0f)
         {
-            misscount = 0;
-            if (tutorial_index == 2)
+            missCount = 0;
+            if (tutorialIndex == 2)
             {
-                tutorial_index++;
+                tutorialIndex++;
                 fatternManager.ChangeFattern(0);
-                fatterntimer += fatternManager.GetTimer();
-                tutorial_play = true;
+                fatternTimer += fatternManager.GetTimer();
+                isTutorialPlay = true;
             }
             else {
-                if (fattern_clear)
+                if (isFatternClear)
                 {
-                    fattern_clear = false;
-                    tutorial_index++;
-                    fatternManager.ChangeFattern(Mathf.Min(++fattern_index, 4));
-                    fatterntimer += fatternManager.GetTimer();
-                    tutorial_play = true;
+                    isFatternClear = false;
+                    tutorialIndex++;
+                    fatternManager.ChangeFattern(Mathf.Min(++fatternIndex, 4));
+                    fatternTimer += fatternManager.GetTimer();
+                    isTutorialPlay = true;
                 }
                 else
                 {
-                    tutorial_index--;
-                    fatternManager.ChangeFattern(fattern_index);
-                    fatterntimer += fatternManager.GetTimer();
-                    tutorial_play = true;
+                    tutorialIndex--;
+                    fatternManager.ChangeFattern(fatternIndex);
+                    fatternTimer += fatternManager.GetTimer();
+                    isTutorialPlay = true;
                 }
             }
         }
@@ -125,18 +125,18 @@ public class TutorialManager : StageManager
 
     public override void StageInit()
     {
-        fatterntimer = 3f;
-        misscount = 0;
+        fatternTimer = 3f;
+        missCount = 0;
         fatternManager.TutorialFatternInit();
         BGSetting();
         BGMSetting();
-        tutorial_index = 0;
-        tutorial_play= true;
+        tutorialIndex = 0;
+        isTutorialPlay = true;
     }
     public void TutorialStart()
     {
-        tutorial_play = true;
-        tutorial_index = 1;
+        isTutorialPlay = true;
+        tutorialIndex = 1;
     }
     protected override void BGSetting()
     {
@@ -152,7 +152,7 @@ public class TutorialManager : StageManager
         Time.timeScale = 0f;
         ClearUI.SetActive(true);
     }
-    public void SceneMove_Title()
+    public void SceneMoveTitle()
     {
         PlayerPrefs.SetInt("FirstPlay", 1);
         CustomSceneManager.Instance.LoadScene("02_TitleScene");

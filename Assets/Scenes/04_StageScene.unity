@@ -5686,6 +5686,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 2
       objectReference: {fileID: 0}
@@ -5861,7 +5865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7535aa13de8d349b38dff18efc5704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flat: {fileID: 1366658469}
+  flats: {fileID: 1366658469}
 --- !u!4 &306325153
 Transform:
   m_ObjectHideFlags: 0
@@ -5962,7 +5966,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2039705926}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SceneMove_Menu
+        m_MethodName: SceneMoveMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6487,6 +6491,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 8
       objectReference: {fileID: 0}
@@ -6815,7 +6823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f626f879492e142a0b7dd7f83c670c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decision_text: {fileID: 252746543}
+  decisionText: {fileID: 252746543}
 --- !u!1 &557668142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,7 +6915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 436541024}
-  wordbubble: {fileID: 557668144}
+  wordBubble: {fileID: 557668144}
 --- !u!1001 &618376253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7466,6 +7474,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 6
       objectReference: {fileID: 0}
@@ -7697,7 +7709,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2039705926}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SceneMove_Menu
+        m_MethodName: SceneMoveMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8166,6 +8178,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 3
       objectReference: {fileID: 0}
@@ -8319,6 +8335,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 5
@@ -8484,6 +8504,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 4
@@ -9140,9 +9164,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 34db256dbc1a68841a61e5231a47653b, type: 3}
   - {fileID: 21300000, guid: 093d407a267c57244a881e1fd342c152, type: 3}
   - {fileID: 21300000, guid: 2c7c7121c7878a14ebac0299679e2445, type: 3}
-  DummyfatternSprite: {fileID: 21300000, guid: de755dad955cb53469e03449dfed02e9, type: 3}
-  CurrentFatternImage: {fileID: 1851860946}
-  NextFatternImage: {fileID: 1904969480}
+  dummyFatternSprite: {fileID: 21300000, guid: de755dad955cb53469e03449dfed02e9, type: 3}
+  currentFatternImage: {fileID: 1851860946}
+  nextFatternImage: {fileID: 1904969480}
 --- !u!1001 &1396100598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9616,23 +9640,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2039705926}
         m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
-        m_MethodName: SceneMove_Menu
+        m_MethodName: SceneMoveMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14846,7 +14858,7 @@ MonoBehaviour:
   - {fileID: 1845673589}
   - {fileID: 1845673588}
   - {fileID: 1845673591}
-  dummyfattern: {fileID: 1845673587}
+  dummyFattern: {fileID: 1845673587}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673585
 MonoBehaviour:
@@ -14860,7 +14872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1346c42bafca540a7e0c7aed9122ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 0
+  fatternIndex: 0
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!4 &1845673586
@@ -14893,7 +14905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b28f4f3c905b34ab38360cad313d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 0
+  fatternIndex: 0
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673588
@@ -14908,7 +14920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c1930810f3a014889c8bfb65146b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 3
+  fatternIndex: 3
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673589
@@ -14923,7 +14935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2682b00ff5d17f14d8087f2bba628f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 2
+  fatternIndex: 2
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -14939,7 +14951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff746ca8be3e46142b08d7844cfb3226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 1
+  fatternIndex: 1
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -14955,7 +14967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7336893e630abc048a6a8f7fc6ec3833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 4
+  fatternIndex: 4
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -15204,7 +15216,7 @@ MonoBehaviour:
   G_Particle: {fileID: 1744082596}
   M_Particle: {fileID: 160484567}
   emote: {fileID: 416482519}
-  flatEffect:
+  flatEffects:
   - {fileID: 520198969}
   - {fileID: 1266162652}
   - {fileID: 409853372}
@@ -15350,7 +15362,7 @@ MonoBehaviour:
   BGChanger: {fileID: 1037794338}
   PauseUI: {fileID: 1046171680}
   ClearUI: {fileID: 1506560497}
-  Score_text: {fileID: 1853429673}
+  ScoreText: {fileID: 1853429673}
   GameoverUI: {fileID: 1815492461}
 --- !u!4 &2039705927
 Transform:
@@ -15374,6 +15386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 7
@@ -16110,6 +16126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 1

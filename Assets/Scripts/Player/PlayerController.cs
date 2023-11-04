@@ -4,45 +4,45 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rigid;
-    SpriteRenderer spr_renderer;
-    Animator anim;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
     int speed;
 
     private void Awake()
     {
         speed = 700;
         rigid = GetComponent<Rigidbody2D>();
-        spr_renderer = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
-    public void Move_Left()
+    public void MoveLeft()
     {
-        spr_renderer.flipX = true;
+        spriteRenderer.flipX = true;
         rigid.velocity = Vector2.left * speed;
     }
-    public void Move_Right()
+    public void MoveRight()
     {
-        spr_renderer.flipX = false;
+        spriteRenderer.flipX = false;
         rigid.velocity = Vector2.right * speed;
     }
-    public void Stop_Move()
+    public void StopMove()
     {
         rigid.velocity = Vector2.zero;
     }
     private void Update()
     {
-        Player_animationCheck();
+        PlayerAnimationCheck();
     }
 
-    void Player_animationCheck()
+    void PlayerAnimationCheck()
     {
         if (rigid.velocity.Equals(Vector2.zero))
         {
-            anim.SetBool("IsWalk", false);
+            animator.SetBool("IsWalk", false);
         }
         else
         {
-            anim.SetBool("IsWalk", true);
+            animator.SetBool("IsWalk", true);
         }
     }
 }

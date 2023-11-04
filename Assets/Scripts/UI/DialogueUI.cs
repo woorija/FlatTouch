@@ -6,38 +6,38 @@ using UnityEngine;
 
 public class DialogueUI : MonoBehaviour
 {
-    [SerializeField] TMP_Text dialogue_text;
-    [SerializeField] TMP_Text charactername_text;
+    [SerializeField] TMP_Text dialogueText;
+    [SerializeField] TMP_Text characternameText;
 
     StringBuilder dialogueBuilder;
-    string origintext;
+    string originText;
 
-    Coroutine typing;
+    Coroutine typingCoroutine;
     private void Awake()
     {
-        dialogueBuilder= new StringBuilder();
+        dialogueBuilder = new StringBuilder();
     }
     public void GetName(string _name)
     {
-        charactername_text.text = _name;
+        characternameText.text = _name;
     }
     public void GetDialogueText(string _origin)
     {
-        origintext = _origin;
+        originText = _origin;
     }
     public void SetDialogueText()
     {
-        dialogue_text.text = dialogueBuilder.ToString();
+        dialogueText.text = dialogueBuilder.ToString();
     }
-    void SetDialogueOrigin()
+    void SetOriginDialogue()
     {
-        dialogue_text.text = origintext;
+        dialogueText.text = originText;
     }
     public void PlayDialogue()
     {
-        typing = StartCoroutine(Typing_dialogue(origintext));
+        typingCoroutine = StartCoroutine(TypingDialogueCoroutine(originText));
     }
-    IEnumerator Typing_dialogue(string _dialogue)
+    IEnumerator TypingDialogueCoroutine(string _dialogue)
     {
         int index = 0;
         while (_dialogue.Length != index)
@@ -52,9 +52,9 @@ public class DialogueUI : MonoBehaviour
     }
     public void DialogueSkip()
     {
-        StopCoroutine(typing);
+        StopCoroutine(typingCoroutine);
         dialogueBuilder.Clear();
-        SetDialogueOrigin();
+        SetOriginDialogue();
         DialogueManager.b_IsTypingEnd = true;
         TutorialDialoguePlayer.b_IsTypingEnd = true;
     }

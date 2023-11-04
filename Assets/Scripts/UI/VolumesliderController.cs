@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumesliderController : MonoBehaviour
+public class VolumeSliderController : MonoBehaviour
 {
     [SerializeField] Slider VolumeSlider;
     private void Awake()

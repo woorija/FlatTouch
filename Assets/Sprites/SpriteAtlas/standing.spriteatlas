@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: standing
+  m_Name: Standing
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -64,17 +64,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 57f0f3fda3eb27445bd240f8cfcb2e48, type: 3}
   m_PackedSpriteNamesToIndex:
   - Player
-  - silhouette6
-  - silhouette3
-  - silhouette2
+  - Silhouette6
+  - Silhouette3
+  - Silhouette2
   - Rabbit
   - Witch
   - Raccoon
-  - silhouette7
-  - silhouette1
+  - Silhouette7
+  - Silhouette1
   - King
-  - silhouette4
-  - silhouette5
+  - Silhouette4
+  - Silhouette5
   m_RenderDataMap: {}
-  m_Tag: standing
+  m_Tag: Standing
   m_IsVariant: 0

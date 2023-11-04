@@ -3,52 +3,52 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class Stage_data
+public class StageData
 {
     public float bpm;
-    public bool[] Usefattern;
-    public Stage_data(float _bpm)
+    public bool[] useFatterns;
+    public StageData(float _bpm)
     {
         bpm = _bpm;
-        Usefattern = new bool[5];
+        useFatterns = new bool[5];
     }
 }
-public class FatternProbability_data
+public class FatternProbabilityData
 {
-    public int[] Fattern_probability;
-    public FatternProbability_data()
+    public int[] fatternsProbability;
+    public FatternProbabilityData()
     {
-        Fattern_probability= new int[5];
+        fatternsProbability = new int[5];
     }
 }
 public class StageDB : MonoBehaviour,ICSVRead
 {
-    public static Dictionary<int, Stage_data> stage_data { get; private set; }
-    public static Dictionary<int,FatternProbability_data> probability_data { get; private set; }
+    public static Dictionary<int, StageData> stageData { get; private set; }
+    public static Dictionary<int,FatternProbabilityData> probabilityData { get; private set; }
     void Start()
     {
-        stage_data= new Dictionary<int, Stage_data>(10);
-        probability_data = new Dictionary<int, FatternProbability_data>(10);
+        stageData= new Dictionary<int, StageData>(10);
+        probabilityData = new Dictionary<int, FatternProbabilityData>(10);
         ReadCSV("StageData");
     }
 
     public void ReadCSV(string _file)
     {
-        string[] lines = CSVReader.Line_Split(_file);
+        string[] lines = CSVReader.LineSplit(_file);
         for (var i = 1; i < lines.Length; i++)
         {
 
             var values = Regex.Split(lines[i], CSVReader.SPLIT_RE);
             if (values.Length == 0 || values[0] == "") continue;
-            stage_data.Add(CSVReader.GetIntData(values[0]), new Stage_data(CSVReader.GetFloatData(values[1])));
+            stageData.Add(CSVReader.GetIntData(values[0]), new StageData(CSVReader.GetFloatData(values[1])));
             for (int j = 0; j < 5; j++)
             {
-                stage_data[CSVReader.GetIntData(values[0])].Usefattern[j] = CSVReader.GetBoolData(values[j + 2]);
+                stageData[CSVReader.GetIntData(values[0])].useFatterns[j] = CSVReader.GetBoolData(values[j + 2]);
             }
-            probability_data.Add(CSVReader.GetIntData(values[0]), new FatternProbability_data());
+            probabilityData.Add(CSVReader.GetIntData(values[0]), new FatternProbabilityData());
             for (int j = 0; j < 5; j++)
             {
-                probability_data[CSVReader.GetIntData(values[0])].Fattern_probability[j] = CSVReader.GetIntData(values[j+7]);
+                probabilityData[CSVReader.GetIntData(values[0])].fatternsProbability[j] = CSVReader.GetIntData(values[j+7]);
             }
         }
     }

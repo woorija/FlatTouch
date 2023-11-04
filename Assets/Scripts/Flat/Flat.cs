@@ -6,17 +6,17 @@ using UnityEngine.UI;
 
 public class Flat : MonoBehaviour,IPointerDownHandler
 {
-    [SerializeField] int flat_number;
-    Image flat_image;
-    RectTransform flat_size;
-    Animation _anim;
+    [SerializeField] int flatNumber;
+    Image flatImage;
+    RectTransform flatSize;
+    Animation anim;
     FatternManager fatternManager;
 
 
     Coroutine check;
     public int Get_flatnumber()
     {
-        return flat_number;
+        return flatNumber;
     }
     public void SetFatternManager(FatternManager _fatternManager)
     {
@@ -24,17 +24,17 @@ public class Flat : MonoBehaviour,IPointerDownHandler
     }
     private void Awake()
     {
-        flat_image = transform.GetChild(0).GetComponent<Image>();
-        flat_size = GetComponent<RectTransform>();
-        _anim = GetComponent<Animation>();
+        flatImage = transform.GetChild(0).GetComponent<Image>();
+        flatSize = GetComponent<RectTransform>();
+        anim = GetComponent<Animation>();
     }
     public void ColorChange(Color _color)
     {
-        flat_image.color = _color;
+        flatImage.color = _color;
     }
     public void PlayChangeAnimation()
     {
-        _anim.Play("Change");
+        anim.Play("Change");
     }
 
     public void OnPointerDown(PointerEventData eventData) // 패턴 매니저에 더해줄것
@@ -44,29 +44,29 @@ public class Flat : MonoBehaviour,IPointerDownHandler
 
     public void FlatTouch()
     {
-        if (GameManager.Instance.b_touchable)
+        if (GameManager.Instance.isTouchable)
         {
             if (check == null)
             {
-                check = StartCoroutine(Co_Flattouch());
+                check = StartCoroutine(FlatTouchCoroutine());
             }
-            fatternManager.InputAnswer(flat_number);
+            fatternManager.InputAnswer(flatNumber);
         }
     }
-    IEnumerator Co_Flattouch()
+    IEnumerator FlatTouchCoroutine()
     {
-        flat_size.localScale = Vector3.one;
-        while (flat_size.localScale.x < 1.3f)
+        flatSize.localScale = Vector3.one;
+        while (flatSize.localScale.x < 1.3f)
         {
-            flat_size.localScale *= 1.05f;
+            flatSize.localScale *= 1.05f;
             yield return null;
         }
-        while (flat_size.localScale.x > 1.0f)
+        while (flatSize.localScale.x > 1.0f)
         {
-            flat_size.localScale *= 0.95f;
+            flatSize.localScale *= 0.95f;
             yield return null;
         }
-        flat_size.localScale = Vector3.one;
+        flatSize.localScale = Vector3.one;
         check = null;
     }
 }

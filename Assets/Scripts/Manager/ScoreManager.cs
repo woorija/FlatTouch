@@ -17,19 +17,19 @@ public class ScoreManager : MonoBehaviour
         score = 0;
         bgchanger.ChangeGrayScale(score);
     }
-    void Set_score()
+    void SetScore()
     {
         bgchanger.ChangeGrayScale(score);
         text.text = score.ToString();
     }
-    public void Set_text(string _s)
+    public void SetText(string _s)
     {
         text.text = _s;
     }
     public void IncreaseScore(int _score)
     {
         score += _score;
-        Set_score();
+        SetScore();
     }
     public int GetScore()
     {

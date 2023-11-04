@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raccoon_emote2
+      name: Raccoon_Emote2
       rect:
         serializedVersion: 2
         x: 347
@@ -125,7 +125,7 @@ TextureImporter:
         width: 444
         height: 617
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,6 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Raccoon_Emote2: -1607392061
       "\uB108\uAD6C\uB9AC3_0": -1607392061
   spritePackingTag: 
   pSDRemoveMatte: 0

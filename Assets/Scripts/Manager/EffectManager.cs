@@ -10,44 +10,44 @@ public class EffectManager : MonoBehaviour
     [SerializeField] ParticleSystem M_Particle;
     [SerializeField] EmoteAnimate emote;
 
-    public FlatEffect[] flatEffect;
-    Vector3 endpos;
+    public FlatEffect[] flatEffects;
+    Vector3 endPos;
     public void EffectInit()
     {
-        emote.EmoteInit(GameManager.Instance.currentstage);
-        wordBubble.WordInit(GameManager.Instance.currentstage);
+        emote.EmoteInit(GameManager.Instance.currentStage);
+        wordBubble.WordInit(GameManager.Instance.currentStage);
     }
-    public void Play_perfect_effect()
+    public void PlayPerfectEffect()
     {
         emote.EmoteSetting(0);
-        emote.Start_emoteanimation();
+        emote.StartEmoteAnimation();
         P_Particle.Play();
     }
-    public void Play_good_effect()
+    public void PlayGoodEffect()
     {
         emote.EmoteSetting(0);
-        emote.Start_emoteanimation();
+        emote.StartEmoteAnimation();
         G_Particle.Play();
     }
-    public void Play_miss_effect()
+    public void PlayMissEffect()
     {
         emote.EmoteSetting(1);
-        emote.Start_emoteanimation();   
+        emote.StartEmoteAnimation();   
         M_Particle.Play();  
     }
-    public void Play_Warning_effect()
+    public void PlayWarningEffect()
     {
         emote.EmoteSetting(2);
-        emote.Start_emoteanimation();
+        emote.StartEmoteAnimation();
         wordBubble.SpeechStart();
         M_Particle.Play();
     }
-    public void SetEndpos()
+    public void SetEndPos()
     {
-        endpos =  new Vector3(Random.Range(-500f, 500f), Random.Range(200f, 500f), 0);
+        endPos =  new Vector3(Random.Range(-500f, 500f), Random.Range(200f, 500f), 0);
     }
-    public Vector3 GetEndpos()
+    public Vector3 GetEndPos()
     {
-        return endpos;
+        return endPos;
     }
 }

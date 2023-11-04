@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class FatternUI : MonoBehaviour
 {
     [SerializeField] Sprite[] fatternSprites;
-    [SerializeField] Sprite DummyfatternSprite;
+    [SerializeField] Sprite dummyFatternSprite;
 
-    [SerializeField] Image CurrentFatternImage;
-    [SerializeField] Image NextFatternImage;
+    [SerializeField] Image currentFatternImage;
+    [SerializeField] Image nextFatternImage;
     public void SetDummyFatternUI()
     {
-        CurrentFatternImage.sprite = DummyfatternSprite;
+        currentFatternImage.sprite = dummyFatternSprite;
     }
     public void SetNextFatternUI(int _index)
     {
-        NextFatternImage.sprite = fatternSprites[_index];
+        nextFatternImage.sprite = fatternSprites[_index];
     }
     public void SetCurrentFatternUI()
     {
-        CurrentFatternImage.sprite = NextFatternImage.sprite;
+        currentFatternImage.sprite = nextFatternImage.sprite;
     }
 }

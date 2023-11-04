@@ -9,7 +9,7 @@ public class ResourceManager
     {
         return Resources.Load<Sprite>($"Sprites/{_path}");
     }
-    public static Sprite GetSprite_to_atlas(string _path,string _name)
+    public static Sprite GetSpriteToAtlas(string _path,string _name)
     {
         return Resources.Load<SpriteAtlas>($"Atlas/{_path}").GetSprite(_name);
     }

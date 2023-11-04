@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Settingbutton : MonoBehaviour
 {
-    public void Start_Game()
+    public void StartGame()
     {
         CustomSceneManager.Instance.LoadScene("03_MenuScene");
     }

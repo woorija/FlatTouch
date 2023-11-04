@@ -6,17 +6,17 @@ using TMPro;
 public class WordBubble : MonoBehaviour
 {
     [SerializeField] TMP_Text text;
-    [SerializeField] Image wordbubble;
+    [SerializeField] Image wordBubble;
 
-    Color SpeechAlpha;
+    Color speechAlpha;
     Color textAlpha = new Color(1, 1, 1, 0);
 
-    Coroutine Co_Speech;
+    Coroutine speechCoroutine;
 
     private void OnEnable()
     {
-        SpeechAlpha = textAlpha;
-        wordbubble.color = SpeechAlpha;
+        speechAlpha = textAlpha;
+        wordBubble.color = speechAlpha;
         text.color = textAlpha;
     }
 
@@ -50,27 +50,27 @@ public class WordBubble : MonoBehaviour
 
     public void SpeechStart()
     {
-        if(Co_Speech != null) { 
-            StopCoroutine(Co_Speech);
+        if(speechCoroutine != null) { 
+            StopCoroutine(speechCoroutine);
         }
-        Co_Speech = StartCoroutine(Co_SpeechStart());
+        speechCoroutine = StartCoroutine(SpeechStartCoroutine());
     }
-    IEnumerator Co_SpeechStart()
+    IEnumerator SpeechStartCoroutine()
     {
         yield return YieldCache.WaitForSeconds(0.1f);
-        while(SpeechAlpha.a <= 1f)
+        while(speechAlpha.a <= 1f)
         {
-            SpeechAlpha.a += 0.05f;
-            wordbubble.color = SpeechAlpha;
-            text.color = SpeechAlpha - textAlpha;
+            speechAlpha.a += 0.05f;
+            wordBubble.color = speechAlpha;
+            text.color = speechAlpha - textAlpha;
             yield return null;
         }
         yield return YieldCache.WaitForSeconds(0.3f);
-        while (SpeechAlpha.a > 0f)
+        while (speechAlpha.a > 0f)
         {
-            SpeechAlpha.a -= 0.06f;
-            wordbubble.color = SpeechAlpha;
-            text.color = SpeechAlpha - textAlpha;
+            speechAlpha.a -= 0.06f;
+            wordBubble.color = speechAlpha;
+            text.color = speechAlpha - textAlpha;
             yield return null;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StagePlaybutton : MonoBehaviour
 {
-    public void Move_StageScene()
+    public void MoveStageScene()
     {
         CustomSceneManager.Instance.LoadScene("04_StageScene");
     }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class GameManager : SingletonBehaviour<GameManager>
 {
-    float audiovolume = 1f; //볼륨세팅
-    public int stage_cleared { get; private set; } = 7;
-    public int story_cleared { get; private set; } = 7;
+    float audioVolume = 1f; //볼륨세팅
+    public int stageCleared { get; private set; } = 7;
+    public int storyCleared { get; private set; } = 7;
     public int score { get; private set; } = 0;
-    public int currentstage_sroce { get; private set; } = 0;
-    public int currentstage { get; private set; } = 0; // 스테이지씬의 리소스 적용을 위한 현스테이지상태 변수
-    public bool b_touchable { get; private set; } = false; //터치 가능 상태
-    public bool b_toucheffect { get; private set; } = false; //터치이펙트 적용 유무
+    public int currentStageSroce { get; private set; } = 0;
+    public int currentStage { get; private set; } = 0; // 스테이지씬의 리소스 적용을 위한 현스테이지상태 변수
+    public bool isTouchable { get; private set; } = false; //터치 가능 상태
+    public bool isTouchEffectPlay { get; private set; } = false; //터치이펙트 적용 유무
     protected override void Awake()
     {
         base.Awake();
@@ -23,19 +23,19 @@ public class GameManager : SingletonBehaviour<GameManager>
     }
     public void SetVolume(float _volume)
     {
-        audiovolume = _volume;
+        audioVolume = _volume;
         AudioManager.Instance.VolumeControl();
     }
-    public void Get_score(int _score)
+    public void GetScore(int _score)
     {
-        if (currentstage > stage_cleared)
+        if (currentStage > stageCleared)
         {
             if (_score > 0)
             {
                 score += _score;
                 if (score >= 100)
                 {
-                    stage_cleared++; //스테이지클리어
+                    stageCleared++; //스테이지클리어
                     score = 0;
                 }
                 SaveGame();
@@ -43,35 +43,35 @@ public class GameManager : SingletonBehaviour<GameManager>
         }
     }
 
-    public float GetVolume() { return audiovolume; }
+    public float GetVolume() { return audioVolume; }
     public void ChangeStage(int _stage)
     {
-        currentstage = _stage;
+        currentStage = _stage;
     }
     public void StoryClear()
     {
-        story_cleared++;
+        storyCleared++;
         SaveGame();
     }
     public void TouchLock()
     {
-        b_touchable = false;
+        isTouchable = false;
     }
     public void TouchUnlock()
     {
-        b_touchable = true;
+        isTouchable = true;
     }
     public void EffectOn()
     {
-        b_toucheffect = true;
+        isTouchEffectPlay = true;
     }
     public void EffectOff()
     {
-        b_toucheffect = false;
+        isTouchEffectPlay = false;
     }
     public void SaveGame()
     {
-        if (b_toucheffect)
+        if (isTouchEffectPlay)
         {
             PlayerPrefs.SetInt("Sfx", 1);
         }
@@ -79,9 +79,9 @@ public class GameManager : SingletonBehaviour<GameManager>
         {
             PlayerPrefs.SetInt("Sfx", 0);
         }
-        PlayerPrefs.SetFloat("Volume", audiovolume);
-        PlayerPrefs.SetInt("CStage", stage_cleared);
-        PlayerPrefs.SetInt("CStory", story_cleared);
+        PlayerPrefs.SetFloat("Volume", audioVolume);
+        PlayerPrefs.SetInt("CStage", stageCleared);
+        PlayerPrefs.SetInt("CStory", storyCleared);
         PlayerPrefs.SetInt("Score", score);
         PlayerPrefs.Save();
     }
@@ -91,16 +91,16 @@ public class GameManager : SingletonBehaviour<GameManager>
         PlayerPrefs.DeleteAll();
         if (PlayerPrefs.GetInt("Sfx", 1) == 1)
         {
-            b_toucheffect = true;
+            isTouchEffectPlay = true;
         }
         else
         {
-            b_toucheffect = false;
+            isTouchEffectPlay = false;
         }
-        audiovolume = PlayerPrefs.GetFloat("Volume", 0.3f);
+        audioVolume = PlayerPrefs.GetFloat("Volume", 0.3f);
         AudioManager.Instance.VolumeControl();
-        stage_cleared = PlayerPrefs.GetInt("CStage", 7);
-        story_cleared = PlayerPrefs.GetInt("CStory", 7);
+        stageCleared = PlayerPrefs.GetInt("CStage", 7);
+        storyCleared = PlayerPrefs.GetInt("CStory", 7);
         score = PlayerPrefs.GetInt("Score", 0);
     }
 }

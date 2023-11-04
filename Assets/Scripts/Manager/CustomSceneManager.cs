@@ -6,44 +6,44 @@ using UnityEngine.SceneManagement;
 public class CustomSceneManager : SingletonBehaviour<CustomSceneManager>
 {
     [SerializeField]
-    CanvasGroup FadeImage;
+    CanvasGroup fadeImage;
     void Start()
     {
-        FadeImage.alpha = 0;
-        FadeImage.blocksRaycasts = true;
+        fadeImage.alpha = 0;
+        fadeImage.blocksRaycasts = true;
     }
     public void LoadScene(string scenename)
     {
-        StartCoroutine(Fade_scene(scenename));
+        StartCoroutine(SceneFadeCoroutine(scenename));
     }
 
-    IEnumerator Fade_In()
+    IEnumerator FadeInCoroutine()
     {
         GameManager.Instance.TouchLock();
-        FadeImage.blocksRaycasts = true;
+        fadeImage.blocksRaycasts = true;
         Time.timeScale = 0;
-        while (FadeImage.alpha < 1)
+        while (fadeImage.alpha < 1)
         {
-            FadeImage.alpha += 0.02f;
+            fadeImage.alpha += 0.02f;
             yield return null;
         }
     }
 
-    IEnumerator Fade_Out()
+    IEnumerator FadeOutCoroutine()
     {
-        while (FadeImage.alpha > 0)
+        while (fadeImage.alpha > 0)
         {
-            FadeImage.alpha -= 0.02f;
+            fadeImage.alpha -= 0.02f;
             yield return null;
         }
         Time.timeScale = 1;
         GameManager.Instance.TouchUnlock();
-        FadeImage.blocksRaycasts = false;
+        fadeImage.blocksRaycasts = false;
     }
 
-    IEnumerator Fade_scene(string scenename)
+    IEnumerator SceneFadeCoroutine(string scenename)
     {
-        yield return StartCoroutine(Fade_In());
+        yield return StartCoroutine(FadeInCoroutine());
         SceneManager.LoadScene(scenename);
         ResourceManager.UnloadAsset();
         yield return new WaitForSecondsRealtime(0.5f);
@@ -55,20 +55,20 @@ public class CustomSceneManager : SingletonBehaviour<CustomSceneManager>
         {
             AudioManager.Instance.PlayMainBGM();
         }
-        yield return StartCoroutine(Fade_Out());
+        yield return StartCoroutine(FadeOutCoroutine());
     }
 
-    public IEnumerator Fade_event(IEnumerator temp_coroutine)
+    public IEnumerator FadeEvent(IEnumerator _tempCoroutine)
     {
-        yield return StartCoroutine(Fade_In());
-        yield return StartCoroutine(temp_coroutine);
+        yield return StartCoroutine(FadeInCoroutine());
+        yield return StartCoroutine(_tempCoroutine);
         yield return new WaitForSecondsRealtime(0.5f);
-        yield return StartCoroutine(Fade_Out());
+        yield return StartCoroutine(FadeOutCoroutine());
     }
 
-    public IEnumerator EXIT_APP()
+    public IEnumerator ExitApp()
     {
-        yield return StartCoroutine(Fade_In());
+        yield return StartCoroutine(FadeInCoroutine());
         Application.Quit();
     }
 }

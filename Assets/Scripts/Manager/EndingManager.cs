@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EndingManager : StoryManager
 {
-    int currentBGindex;
+    int currentBGIndex;
     //[SerializeField] 성 오브젝트
     [SerializeField] GameObject[] NPCs;
     [SerializeField] GameObject trigger;
     [SerializeField] GameObject castle;
 
-    [SerializeField] SpriteRenderer Player;
+    [SerializeField] SpriteRenderer player;
     protected override void Start()
     {
         Init();
@@ -18,53 +18,53 @@ public class EndingManager : StoryManager
     }
     void Init()
     {
-        currentBGindex = 8;
-        bgchanger.ChangeGrayScale(100);
+        currentBGIndex = 8;
+        bgChanger.ChangeGrayScale(100);
         PlayerSetting();
         BGChange();
     }
     void PlayerSetting()
     {
-        if (currentBGindex == 4)
+        if (currentBGIndex == 4)
         {
-            PlayerSetting_left();
+            PlayerSettingLeft();
         }
         else
         {
-            PlayerSetting_right();
+            PlayerSettingRight();
         }
     }
-    void PlayerSetting_right()
+    void PlayerSettingRight()
     {
-        Player.gameObject.transform.position = new Vector3(3200, -900, 0);
-        Player.flipX = true;
+        player.gameObject.transform.position = new Vector3(3200, -900, 0);
+        player.flipX = true;
     }
-    void PlayerSetting_left()
+    void PlayerSettingLeft()
     {
-        Player.gameObject.transform.position = new Vector3(-100, -900, 0);
-        Player.flipX = false;
+        player.gameObject.transform.position = new Vector3(-100, -900, 0);
+        player.flipX = false;
     }
     protected override void BGChange()
     {
-        currentBGindex--;
-        switch (currentBGindex)
+        currentBGIndex--;
+        switch (currentBGIndex)
         {
             case 4: // 성 내부는 성 주변에서 성 클릭으로 이동하기때문에 패스
-                currentBGindex--;
+                currentBGIndex--;
                 break;
             case 1:
                 trigger.SetActive(false);
                 castle.SetActive(true);
                 break;
             case 0:
-                currentBGindex = 4;
+                currentBGIndex = 4;
                 castle.SetActive(false);
-                Enable_NPC();
+                EnableNpc();
                 break;
         }
-        bgchanger.BGChange(currentBGindex);
+        bgChanger.BGChange(currentBGIndex);
     }
-    void Enable_NPC()
+    void EnableNpc()
     {
         foreach(GameObject go in NPCs)
         {
@@ -76,10 +76,10 @@ public class EndingManager : StoryManager
     {
         if (check == null)
         {
-            check=StartCoroutine(CustomSceneManager.Instance.Fade_event(Co_SceneChange()));
+            check=StartCoroutine(CustomSceneManager.Instance.FadeEvent(SceneChangeCoroutine()));
         }
     }
-    IEnumerator Co_SceneChange()
+    IEnumerator SceneChangeCoroutine()
     {
         Time.timeScale = 10;
         BGChange();

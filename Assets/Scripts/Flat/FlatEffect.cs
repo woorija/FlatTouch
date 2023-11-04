@@ -9,27 +9,27 @@ public class FlatEffect : MonoBehaviour
     ParticleSystem.MainModule mainModule;
     ParticleSystem.Particle[] particles;
 
-    Vector3 endpos;
-    Vector3[] controlpos1;
-    Vector3 controlpos2;
+    Vector3 endPos;
+    Vector3[] controlPos1;
+    Vector3 controlPos2;
 
-    Light2D endposlight;
+    Light2D endPosLight;
 
     float duration = 0.5f;
     float timer = 0f;
 
-    bool Istransparent = false;
+    bool IsTransparent = false;
     Color transparent;
     private void Awake()
     {
         particle= GetComponent<ParticleSystem>();
-        endposlight = GetComponentInChildren<Light2D>();
-        endposlight.intensity = 0;
-        endposlight.gameObject.SetActive(false);
+        endPosLight = GetComponentInChildren<Light2D>();
+        endPosLight.intensity = 0;
+        endPosLight.gameObject.SetActive(false);
         mainModule = particle.main;
         transparent = new Color(0, 0, 0, 0);
         particles = new ParticleSystem.Particle[mainModule.maxParticles];
-        controlpos1 = new Vector3[mainModule.maxParticles];
+        controlPos1 = new Vector3[mainModule.maxParticles];
     }
     public void ColorChange(Color _color)
     {
@@ -37,12 +37,12 @@ public class FlatEffect : MonoBehaviour
     }
     public void SetEndpos(Vector3 _endpos)
     {
-        endpos = _endpos;
-        endposlight.transform.position = endpos;
+        endPos = _endpos;
+        endPosLight.transform.position = endPos;
     }
     public void PlayEffect()
     {
-        Istransparent = false;
+        IsTransparent = false;
         particle.Play();
         timer = 0f;
         SetRandomPos();
@@ -50,21 +50,21 @@ public class FlatEffect : MonoBehaviour
     void SetRandomPos()
     {
         float deg = Random.Range(0f, 360f);
-        controlpos2 = new Vector3(endpos.x + (10 * Mathf.Sin(deg)), endpos.y + (10 * Mathf.Cos(deg)), 0);
+        controlPos2 = new Vector3(endPos.x + (10 * Mathf.Sin(deg)), endPos.y + (10 * Mathf.Cos(deg)), 0);
         for (int i = 0; i < particles.Length; i++)
         {
-            controlpos1[i] = particles[i].position + particles[i].velocity*0.5f;
+            controlPos1[i] = particles[i].position + particles[i].velocity*0.5f;
         }
     }
     private void LateUpdate()
     {
-        if (!Istransparent)
+        if (!IsTransparent)
         {
             timer += Time.deltaTime;
             if (timer > duration)
             {
-                Istransparent = true;
-                endposlight.gameObject.SetActive(true);
+                IsTransparent = true;
+                endPosLight.gameObject.SetActive(true);
                 ColorChange(transparent);
             }
             particle.GetParticles(particles);
@@ -73,7 +73,7 @@ public class FlatEffect : MonoBehaviour
             {
                 for (int i = 0; i < particles.Length; i++)
                 {
-                    particles[i].position = CalculateBezierPoint(t, transform.position, controlpos1[i], controlpos2, endpos);
+                    particles[i].position = CalculateBezierPoint(t, transform.position, controlPos1[i], controlPos2, endPos);
                 }
 
                 particle.SetParticles(particles, particles.Length);

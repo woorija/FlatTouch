@@ -116,14 +116,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 750909ff5e077fb468f4d01e01df69b9, type: 3}
   m_PackedSpriteNamesToIndex:
   - clear_button_0
-  - setting_effectoff
+  - Setting_Effectoff_Button
   - flat_0
   - Bookmark3_0
-  - "\uBC18\uC804\uBB34\uC9C0\uAC1C\uD328\uD134"
+  - ReverseRainbow_Pattern
   - PAUSE_replay_0
   - game over_ui_0
   - game over_ok_0
-  - sign_setting
+  - Sign_Setting_Button
   - Bookmark4_0
   - Bookmark2_0
   - Bookcover
@@ -132,41 +132,41 @@ SpriteAtlas:
   - FadeObject
   - Bookmark6_0
   - PAUSE_ui_0
-  - "RGB\uD328\uD134"
+  - RGB_Pattern
   - Title
   - Bookpage
-  - setting_soundbar
-  - signpost
-  - "\uB85C\uACE0"
-  - setting_effecton
+  - Setting_Soundbar
+  - Signpost
+  - Logo
+  - Setting_Effecton_Button
   - dialogue_0
   - Bookmark1_0
-  - sign_exit
-  - setting_ui
-  - currentpage
+  - Sign_Exit_Button
+  - SettingUI
+  - Currentpage
   - Bookmark5_0
-  - end_ui
-  - "\uC9C0\uD321\uC774"
+  - EndUI
+  - MagicWand
   - dicision_0
   - wordbubbles_1
   - wordbubbles_0
-  - "\uB2E8\uC77C\uCEEC\uB7EC\uD328\uD134"
+  - One_Pattern
   - game over_replay_0
   - timerbar_0
   - Bookmark7_0
   - PAUSE_play_0
   - clear_ui_0
-  - sign_play
+  - Sign_Play_Button
   - TutorialDialogue
-  - setting_sound_button
-  - "\uBB34\uC9C0\uAC1C\uD328\uD134"
-  - "\uB178\uB9D0\uD328\uD134"
-  - "\uB354\uBBF8\uD328\uD134"
-  - sign_story
-  - end_x
-  - end_o
+  - Setting_Sound_Button
+  - Rainbow_Pattern
+  - Normal_Pattern
+  - Dummy_Pattern
+  - Sign_Story_Button
+  - End_X_Button
+  - End_O_Button
   - flat_border_0
-  - setting_ok
+  - Setting_Ok_Button
   m_RenderDataMap: {}
   m_Tag: UI
   m_IsVariant: 0

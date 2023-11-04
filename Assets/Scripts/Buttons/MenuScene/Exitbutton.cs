@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Exitbutton : MonoBehaviour
 {
-    public void Exit_Game()
+    public void ExitGame()
     {
-        StartCoroutine(CustomSceneManager.Instance.EXIT_APP());
+        StartCoroutine(CustomSceneManager.Instance.ExitApp());
     }
 }

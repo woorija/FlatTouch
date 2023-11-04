@@ -7,16 +7,16 @@ public class PopupLogo : MonoBehaviour
     private void Start()
     {
         //PlayerPrefs.SetInt("FirstPlay", 0);
-        StartCoroutine(C_Scenemove());
+        StartCoroutine(ScenemoveCoroutine());
     }
 
 
-    public void Scenemove()
+    public void SceneMove()
     {
         if(PlayerPrefs.GetInt("FirstPlay", 0) == 0)
         {
-            CustomSceneManager.Instance.LoadScene("01_IntroScene");
-            //CustomSceneManager.Instance.LoadScene("02_TitleScene");
+            //CustomSceneManager.Instance.LoadScene("01_IntroScene");
+            CustomSceneManager.Instance.LoadScene("02_TitleScene");
             //CustomSceneManager.Instance.LoadScene("07_TutorialScene");
         }
         else
@@ -26,9 +26,9 @@ public class PopupLogo : MonoBehaviour
         }
     }
 
-    IEnumerator C_Scenemove()
+    IEnumerator ScenemoveCoroutine()
     {
         yield return new WaitForSeconds(5.0f);
-        Scenemove();
+        SceneMove();
     }
 }

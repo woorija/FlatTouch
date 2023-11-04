@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Witch_emote5
+      name: Witch_Emote5
       rect:
         serializedVersion: 2
         x: 300
@@ -125,7 +125,7 @@ TextureImporter:
         width: 429
         height: 716
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,6 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Witch_Emote5: 1713326891
       "\uB9C8\uB1406_0": 1713326891
   spritePackingTag: 
   pSDRemoveMatte: 0

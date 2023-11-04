@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class StoryManager : MonoBehaviour
 {
-    protected int current_story;
+    protected int currentStory;
     protected Coroutine check;
-    [SerializeField] protected GameObject[] PlayableModeObject;
-    [SerializeField] protected GameObject PauseUI;
+    [SerializeField] protected GameObject[] playableModeObjects;
+    [SerializeField] protected GameObject pauseUI;
 
-    [SerializeField] protected BGChanger bgchanger;
+    [SerializeField] protected BGChanger bgChanger;
     [SerializeField] protected DialogueManager dialogueManager;
     
     protected void Awake()
     {
-        current_story = GameManager.Instance.currentstage;
+        currentStory = GameManager.Instance.currentStage;
     }
     protected virtual void Start() 
     {
@@ -23,34 +23,34 @@ public class StoryManager : MonoBehaviour
     }
     protected virtual void BGChange()
     {
-        bgchanger.BGChange(current_story+1);
-        switch (current_story)
+        bgChanger.BGChange(currentStory + 1);
+        switch (currentStory)
         {
             case 1:
             case 2:
             case 3:
             case 4:
             case 5:
-                bgchanger.ChangeGrayScale(0);
+                bgChanger.ChangeGrayScale(0);
                 break;
             case 6:
-                bgchanger.ChangeGrayScale(30);
+                bgChanger.ChangeGrayScale(30);
                 break;
             case 7:
-                bgchanger.ChangeGrayScale(100);
+                bgChanger.ChangeGrayScale(100);
                 break;
         }
     }
-    public void NPC_Touch()
+    public void NpcTouch()
     {
         if (check == null)
         {
-            check= StartCoroutine(CustomSceneManager.Instance.Fade_event(Co_NPC_Touch()));
+            check= StartCoroutine(CustomSceneManager.Instance.FadeEvent(NpcTouchCoroutine()));
         }
     }
-    protected IEnumerator Co_NPC_Touch()
+    protected IEnumerator NpcTouchCoroutine()
     {
-        foreach(GameObject go in PlayableModeObject)
+        foreach(GameObject go in playableModeObjects)
         {
             go.SetActive(false);
         }
@@ -62,17 +62,18 @@ public class StoryManager : MonoBehaviour
         Time.timeScale = 0f;
         GameManager.Instance.TouchLock();
         AudioManager.Instance.PauseBgm();
-        PauseUI.SetActive(true);
+        pauseUI.SetActive(true);
     }
     public void UnPauseGame()
     {
         Time.timeScale = 1f;
         GameManager.Instance.TouchUnlock();
         AudioManager.Instance.UnpauseBgm();
-        PauseUI.SetActive(false);
+        pauseUI.SetActive(false);
     }
-    public void SceneMove_Menu()
+    public void SceneMoveMenu()
     {
+        AudioManager.Instance.UnpauseBgm();
         CustomSceneManager.Instance.LoadScene("03_MenuScene");
     }
 }

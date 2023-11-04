@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class NPCTouch : MonoBehaviour
 {
-    [SerializeField] StoryManager storymanager;
+    [SerializeField] StoryManager storyManager;
     private void OnMouseDown()
     {
-        Debug.Log(111);
-        storymanager.NPC_Touch();
+        storyManager.NpcTouch();
     }
 }

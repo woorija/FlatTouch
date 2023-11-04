@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_emote3
+      name: Player_Emote3
       rect:
         serializedVersion: 2
         x: 438
@@ -125,7 +125,7 @@ TextureImporter:
         width: 377
         height: 773
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,6 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Player_Emote3: 1832895109
       "\uAE30\uC068_0": 1832895109
   spritePackingTag: 
   pSDRemoveMatte: 0

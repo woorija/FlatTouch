@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class NPCAnimation : MonoBehaviour
 {
-    Animator _anim;
-    BoxCollider2D _collider;
-    [SerializeField] Vector3 stand_pos;
+    Animator animator;
+    BoxCollider2D boxCollider;
+    [SerializeField] Vector3 standPos;
     [SerializeField] int index;
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
-        _collider= GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
     private void Start()
     {
@@ -22,13 +22,13 @@ public class NPCAnimation : MonoBehaviour
     {
         if (index == 0)
         {
-            index = Mathf.Clamp(GameManager.Instance.currentstage, 1, 4);
+            index = Mathf.Clamp(GameManager.Instance.currentStage, 1, 4);
         }
     }
     void SelectStandingImage()
     {
         Vector2 collider_size = Vector2.zero;
-        _anim.SetInteger("NPC", index);
+        animator.SetInteger("NPC", index);
         switch (index)
         {
             case 1:
@@ -44,9 +44,9 @@ public class NPCAnimation : MonoBehaviour
                 collider_size = new Vector2(460f, 640f);
                 break;
         }
-        _anim.gameObject.transform.position = stand_pos;
-        _collider.size = collider_size;
-        _collider.transform.position = stand_pos;
-        _collider.offset = new Vector2(0, collider_size.y * 0.5f);
+        animator.gameObject.transform.position = standPos;
+        boxCollider.size = collider_size;
+        boxCollider.transform.position = standPos;
+        boxCollider.offset = new Vector2(0, collider_size.y * 0.5f);
     }
 }

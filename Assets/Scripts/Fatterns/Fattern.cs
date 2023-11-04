@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class Fattern : MonoBehaviour
 {
-    protected List<int> answer;
-    protected List<int> right_answer;
-    [SerializeField] protected int fattern_index;
+    protected List<int> answers;
+    protected List<int> rightAnswers;
+    [SerializeField] protected int fatternIndex;
 
-    protected int[] random_index = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }; // 플랫 갯수만큼 있는 정답 플랫 랜덤을 위한 배열
+    protected int[] randomIndex = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }; // 플랫 갯수만큼 있는 정답 플랫 랜덤을 위한 배열
     [SerializeField] protected FlatColorDB colorDB;
     [SerializeField] protected Flats flats;
 
@@ -16,7 +16,7 @@ public abstract class Fattern : MonoBehaviour
     protected EffectManager effectManager;
     protected DecisionManager decisionManager;
 
-    protected float fatterntimer;
+    protected float fatternTimer;
     protected virtual void Start()
     {
     }
@@ -28,20 +28,20 @@ public abstract class Fattern : MonoBehaviour
     }
     protected void shuffle()
     {
-        for (int index = 0; index < random_index.Length; index++)
+        for (int index = 0; index < randomIndex.Length; index++)
         {
-            int random_Index = Random.Range(index, random_index.Length);
-            int temp = random_index[index];
-            random_index[index] = random_index[random_Index];
-            random_index[random_Index] = temp;
+            int tempIndex = Random.Range(index, randomIndex.Length);
+            int temp = randomIndex[index];
+            randomIndex[index] = randomIndex[tempIndex];
+            randomIndex[tempIndex] = temp;
         }
     }
     protected virtual bool IsRightAnswer(int _num)
     {
         bool _answer = false;
-        for (int i = 0; i < right_answer.Count; i++)
+        for (int i = 0; i < rightAnswers.Count; i++)
         {
-            if (_num == right_answer[i])
+            if (_num == rightAnswers[i])
             {
                 _answer = true;
                 break;
@@ -51,15 +51,15 @@ public abstract class Fattern : MonoBehaviour
     }
     public virtual void StartFattern() 
     { 
-        decisionManager.CurrentdecisionInit();
+        decisionManager.CurrentDecisionInit();
     }
-    public virtual void StartFattern_tuto()
+    public virtual void StartTutorialFattern()
     {
-        decisionManager.CurrentdecisionInit();
+        decisionManager.CurrentDecisionInit();
     }
     public virtual void ExitFattern()
     {
-        if (decisionManager.current_decision == Decision.NONE)
+        if (decisionManager.currentDecision == Decision.NONE)
         {
             SetDecision(Decision.MISS);
         }
@@ -75,29 +75,29 @@ public abstract class Fattern : MonoBehaviour
         switch (_decision)
         {
             case Decision.PERPECT:
-                effectManager.Play_perfect_effect();
+                effectManager.PlayPerfectEffect();
                 break;
             case Decision.GOOD:
-                effectManager.Play_good_effect();
+                effectManager.PlayGoodEffect();
                 break;
             case Decision.EARLY:
             case Decision.LATE:
-                effectManager.Play_miss_effect();
+                effectManager.PlayMissEffect();
                 break;
             case Decision.MISS:
-                StageManager.misscount++;
-                if(StageManager.misscount >= 10)
+                StageManager.missCount++;
+                if(StageManager.missCount >= 10)
                 {
                     StageManager stageManager = FindObjectOfType<StageManager>();
                     stageManager.GameOver();
                 }
-                if (StageManager.misscount >= 3)
+                if (StageManager.missCount >= 3)
                 {
-                    effectManager.Play_Warning_effect();
+                    effectManager.PlayWarningEffect();
                 }
                 else
                 {
-                    effectManager.Play_miss_effect();
+                    effectManager.PlayMissEffect();
                 }
                 break;
         }
@@ -105,46 +105,46 @@ public abstract class Fattern : MonoBehaviour
     protected virtual void SetDecisionScore(Decision _decision) { }
     public float GetTimer()
     {
-        return fatterntimer;
+        return fatternTimer;
     }
     public int GetIndex()
     {
-        return fattern_index;
+        return fatternIndex;
     }
     protected void PlayAllFlatEffect()
     {
-        if (GameManager.Instance.b_toucheffect)
+        if (GameManager.Instance.isTouchEffectPlay)
         {
-            effectManager.SetEndpos();
-            for (int i = 0; i < right_answer.Count; i++)
+            effectManager.SetEndPos();
+            for (int i = 0; i < rightAnswers.Count; i++)
             {
-                effectManager.flatEffect[right_answer[i]].ColorChange(colorDB.FlatColorList(0));
-                effectManager.flatEffect[right_answer[i]].SetEndpos(effectManager.GetEndpos());
-                effectManager.flatEffect[right_answer[i]].PlayEffect();
+                effectManager.flatEffects[rightAnswers[i]].ColorChange(colorDB.FlatColorList(0));
+                effectManager.flatEffects[rightAnswers[i]].SetEndpos(effectManager.GetEndPos());
+                effectManager.flatEffects[rightAnswers[i]].PlayEffect();
             }
         }
     }
     protected void PlayRGBFlatEffect()
     {
-        if (GameManager.Instance.b_toucheffect)
+        if (GameManager.Instance.isTouchEffectPlay)
         {
-            effectManager.SetEndpos();
-            for (int i = 0; i < right_answer.Count; i++)
+            effectManager.SetEndPos();
+            for (int i = 0; i < rightAnswers.Count; i++)
             {
-                effectManager.flatEffect[right_answer[i]].ColorChange(colorDB.RGBColorList(0));
-                effectManager.flatEffect[right_answer[i]].SetEndpos(effectManager.GetEndpos());
-                effectManager.flatEffect[right_answer[i]].PlayEffect();
+                effectManager.flatEffects[rightAnswers[i]].ColorChange(colorDB.RGBColorList(0));
+                effectManager.flatEffects[rightAnswers[i]].SetEndpos(effectManager.GetEndPos());
+                effectManager.flatEffects[rightAnswers[i]].PlayEffect();
             }
         }
     }
     protected void PlayFlatEffect(int _index)
     {
-        if (GameManager.Instance.b_toucheffect)
+        if (GameManager.Instance.isTouchEffectPlay)
         {
-            effectManager.SetEndpos();
-            effectManager.flatEffect[right_answer[_index]].ColorChange(colorDB.RainbowColorList[_index]);
-            effectManager.flatEffect[right_answer[_index]].SetEndpos(effectManager.GetEndpos());
-            effectManager.flatEffect[right_answer[_index]].PlayEffect();
+            effectManager.SetEndPos();
+            effectManager.flatEffects[rightAnswers[_index]].ColorChange(colorDB.RainbowColorList[_index]);
+            effectManager.flatEffects[rightAnswers[_index]].SetEndpos(effectManager.GetEndPos());
+            effectManager.flatEffects[rightAnswers[_index]].PlayEffect();
         }
     }
 }

@@ -5540,7 +5540,7 @@ MonoBehaviour:
   G_Particle: {fileID: 1744082596}
   M_Particle: {fileID: 160484567}
   emote: {fileID: 416482519}
-  flatEffect:
+  flatEffects:
   - {fileID: 520198969}
   - {fileID: 1266162652}
   - {fileID: 409853372}
@@ -6157,6 +6157,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 2
       objectReference: {fileID: 0}
@@ -6332,7 +6336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7535aa13de8d349b38dff18efc5704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flat: {fileID: 1366658469}
+  flats: {fileID: 1366658469}
 --- !u!4 &306325153
 Transform:
   m_ObjectHideFlags: 0
@@ -7762,6 +7766,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 8
       objectReference: {fileID: 0}
@@ -8365,7 +8373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 436541024}
-  wordbubble: {fileID: 557668144}
+  wordBubble: {fileID: 557668144}
 --- !u!1 &586211217
 GameObject:
   m_ObjectHideFlags: 0
@@ -9641,6 +9649,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 6
       objectReference: {fileID: 0}
@@ -9914,7 +9926,7 @@ GameObject:
   - component: {fileID: 887028296}
   - component: {fileID: 887028295}
   m_Layer: 5
-  m_Name: Continue_Button
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9986,7 +9998,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1210463479}
         m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-        m_MethodName: SceneMove_Title
+        m_MethodName: SceneMoveTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11049,6 +11061,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 3
       objectReference: {fileID: 0}
@@ -11340,6 +11356,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 5
       objectReference: {fileID: 0}
@@ -11504,6 +11524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 4
@@ -11815,6 +11839,7 @@ MonoBehaviour:
   BGChanger: {fileID: 1037794338}
   PauseUI: {fileID: 0}
   ClearUI: {fileID: 1506560497}
+  ScoreText: {fileID: 0}
   GameoverUI: {fileID: 0}
   DialoguePlayer: {fileID: 1210463482}
 --- !u!4 &1210463480
@@ -11844,7 +11869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88a3388038f1c641bf110f32e5acb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeObject:
+  FadeObjects:
   - {fileID: 1278695229}
   - {fileID: 1589555901}
   - {fileID: 1298559556}
@@ -11869,8 +11894,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBG: {fileID: 1070753549}
   dialogueUI: {fileID: 1867567307}
-  dialogueUI_RT: {fileID: 1867567304}
-  obj_controller: {fileID: 1210463481}
+  dialogueUIRectTransform: {fileID: 1867567304}
+  objectController: {fileID: 1210463481}
 --- !u!114 &1246354622 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
@@ -12657,9 +12682,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 34db256dbc1a68841a61e5231a47653b, type: 3}
   - {fileID: 21300000, guid: 093d407a267c57244a881e1fd342c152, type: 3}
   - {fileID: 21300000, guid: 2c7c7121c7878a14ebac0299679e2445, type: 3}
-  DummyfatternSprite: {fileID: 21300000, guid: de755dad955cb53469e03449dfed02e9, type: 3}
-  CurrentFatternImage: {fileID: 1851860946}
-  NextFatternImage: {fileID: 1904969480}
+  dummyFatternSprite: {fileID: 21300000, guid: de755dad955cb53469e03449dfed02e9, type: 3}
+  currentFatternImage: {fileID: 1851860946}
+  nextFatternImage: {fileID: 1904969480}
 --- !u!1001 &1396100598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19683,7 +19708,7 @@ MonoBehaviour:
   - {fileID: 1845673589}
   - {fileID: 1845673588}
   - {fileID: 1845673591}
-  dummyfattern: {fileID: 1845673587}
+  dummyFattern: {fileID: 1845673587}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673585
 MonoBehaviour:
@@ -19697,7 +19722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1346c42bafca540a7e0c7aed9122ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 0
+  fatternIndex: 0
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!4 &1845673586
@@ -19730,7 +19755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b28f4f3c905b34ab38360cad313d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 0
+  fatternIndex: 0
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673588
@@ -19745,7 +19770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c1930810f3a014889c8bfb65146b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 3
+  fatternIndex: 3
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
 --- !u!114 &1845673589
@@ -19760,7 +19785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2682b00ff5d17f14d8087f2bba628f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 2
+  fatternIndex: 2
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -19776,7 +19801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff746ca8be3e46142b08d7844cfb3226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 1
+  fatternIndex: 1
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -19792,7 +19817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7336893e630abc048a6a8f7fc6ec3833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fattern_index: 4
+  fatternIndex: 4
   colorDB: {fileID: 1264570896}
   flats: {fileID: 1366658469}
   decisionObject: {fileID: 1501941069}
@@ -19962,8 +19987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a47c173b2db3d45aa7ed70fba713a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue_text: {fileID: 1146137004}
-  charactername_text: {fileID: 0}
+  dialogueText: {fileID: 1146137004}
+  characternameText: {fileID: 0}
 --- !u!1 &1904969478
 GameObject:
   m_ObjectHideFlags: 0
@@ -20786,6 +20811,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 7
       objectReference: {fileID: 0}
@@ -21358,7 +21387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f626f879492e142a0b7dd7f83c670c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decision_text: {fileID: 252746543}
+  decisionText: {fileID: 252746543}
 --- !u!1 &2108642447
 GameObject:
   m_ObjectHideFlags: 0
@@ -21926,6 +21955,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366658468}
     m_Modifications:
+    - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
+      propertyPath: flatNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1709182131408616343, guid: 0f43b7375fa50414ab25b99c496ded1e, type: 3}
       propertyPath: flat_number
       value: 1

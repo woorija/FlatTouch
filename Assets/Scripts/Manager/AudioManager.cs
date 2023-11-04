@@ -16,8 +16,8 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     [SerializeField] AudioSource[] sfxPlayer;
 
     float volume;
-    public string current_bgmname { get; private set; } = "";
-    Coroutine Co_MainBGMPlaying;
+    public string currentBgmName { get; private set; } = string.Empty;
+    Coroutine MainBGMPlayingCheckCoroutine;
     public void VolumeControl()
     {
         volume=GameManager.Instance.GetVolume(); ;
@@ -29,21 +29,21 @@ public class AudioManager : SingletonBehaviour<AudioManager>
     }
     public void PlayMainBGM()
     {
-        if (!current_bgmname.Equals("MainBGM"))
+        if (!currentBgmName.Equals("MainBGM"))
         {
-            Co_MainBGMPlaying = StartCoroutine(Co_PlayMainBGM());
+            MainBGMPlayingCheckCoroutine = StartCoroutine(PlayMainBGMCoroutine());
         }
     }
     public void StopMainBGM()
     {
         StopBgm();
-        if (Co_MainBGMPlaying != null)
+        if (MainBGMPlayingCheckCoroutine != null)
         {
-            StopCoroutine(Co_MainBGMPlaying);
-            Co_MainBGMPlaying = null;
+            StopCoroutine(MainBGMPlayingCheckCoroutine);
+            MainBGMPlayingCheckCoroutine = null;
         }
     }
-    IEnumerator Co_PlayMainBGM()
+    IEnumerator PlayMainBGMCoroutine()
     {
         PlayBgm("MainBGM");
         while (true)
@@ -59,7 +59,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
             if (_name == bgm[i].name)
             {
                 bgmPlayer.clip = bgm[i].clip;
-                current_bgmname = bgm[i].name;
+                currentBgmName = bgm[i].name;
                 bgmPlayer.Play();
                 return;
             }
@@ -70,7 +70,7 @@ public class AudioManager : SingletonBehaviour<AudioManager>
         if (bgmPlayer.clip != null)
         {
             bgmPlayer.Stop();
-            current_bgmname = "";
+            currentBgmName = string.Empty;
         }
     }
 

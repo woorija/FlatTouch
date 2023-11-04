@@ -12,11 +12,11 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] GameObject PauseUI;
     [SerializeField] protected GameObject ClearUI;
-    [SerializeField] TMP_Text Score_text;
+    [SerializeField] TMP_Text ScoreText;
     [SerializeField] GameObject GameoverUI;
-    public static float fatterntimer { get; protected set; }
-    public static int misscount = 0;
-    Coroutine Co_clearcheck;
+    public static float fatternTimer { get; protected set; }
+    public static int missCount = 0;
+    Coroutine clearCheckCoroutine;
     protected virtual void Start()
     {
         StageInit();
@@ -27,36 +27,36 @@ public class StageManager : MonoBehaviour
         PauseUI.SetActive(false);
         ClearUI.SetActive(false);
         GameoverUI.SetActive(false);
-        fatterntimer = 3f;
-        misscount = 0;
+        fatternTimer = 3f;
+        missCount = 0;
         fatternManager.FatternInit();
         fatternManager.StartFattern();
         BGSetting();
-        if (Co_clearcheck!= null)
+        if (clearCheckCoroutine != null)
         {
-            StopCoroutine(Co_clearcheck);
+            StopCoroutine(clearCheckCoroutine);
         }
-        Co_clearcheck = StartCoroutine(ClearCheck());
+        clearCheckCoroutine = StartCoroutine(ClearCheckCoroutine());
 
     }
     protected virtual void Update()
     {
-        timecheck();
+        Timecheck();
     }
-    protected virtual void timecheck()
+    protected virtual void Timecheck()
     {
-        fatterntimer -= Time.deltaTime;
-        timerbar.TimerbarUpdate(1 - (fatterntimer / fatternManager.GetTimer()));
-        if (fatterntimer <= 0f)
+        fatternTimer -= Time.deltaTime;
+        timerbar.TimerbarUpdate(1 - (fatternTimer / fatternManager.GetTimer()));
+        if (fatternTimer <= 0f)
         {
             fatternManager.ChangeFattern();
-            fatterntimer += fatternManager.GetTimer();
+            fatternTimer += fatternManager.GetTimer();
         }
     }
     protected virtual float LateBGMTime() //싱크 맞추기
     {
         float time = 0;
-        switch (GameManager.Instance.currentstage)
+        switch (GameManager.Instance.currentStage)
         {
             case 1:
                 time = -0.25f;
@@ -85,11 +85,11 @@ public class StageManager : MonoBehaviour
     protected virtual void BGMSetting()
     {
         AudioManager.Instance.StopBgm();
-        AudioManager.Instance.PlayBgm($"Stage{GameManager.Instance.currentstage}BGM");
+        AudioManager.Instance.PlayBgm($"Stage{GameManager.Instance.currentStage}BGM");
     }
     protected virtual void BGSetting()
     {
-        BGChanger.StageBGChange(GameManager.Instance.currentstage);
+        BGChanger.StageBGChange(GameManager.Instance.currentStage);
     }
     public void PauseGame()
     {
@@ -109,17 +109,17 @@ public class StageManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         GameManager.Instance.TouchLock();
-        GameManager.Instance.Get_score(FindObjectOfType<ScoreManager>().GetScore());
+        GameManager.Instance.GetScore(FindObjectOfType<ScoreManager>().GetScore());
         AudioManager.Instance.StopBgm();
         GameoverUI.SetActive(true);
     }
-    public void SceneMove_Menu()
+    public void SceneMoveMenu()
     {
         CustomSceneManager.Instance.LoadScene("03_MenuScene");
     }
-    IEnumerator ClearCheck()
+    IEnumerator ClearCheckCoroutine()
     {
-        yield return YieldCache.WaitForSeconds(fatterntimer + LateBGMTime());
+        yield return YieldCache.WaitForSeconds(fatternTimer + LateBGMTime());
         BGMSetting();
         yield return YieldCache.WaitForSeconds(AudioManager.Instance.GetBGMLength());
         GameClear();
@@ -131,7 +131,7 @@ public class StageManager : MonoBehaviour
         AudioManager.Instance.StopBgm();
         ClearUI.SetActive(true);
         int score = FindObjectOfType<ScoreManager>().GetScore();
-        GameManager.Instance.Get_score(score);
-        Score_text.text = score.ToString();
+        GameManager.Instance.GetScore(score);
+        ScoreText.text = score.ToString();
     }
 }

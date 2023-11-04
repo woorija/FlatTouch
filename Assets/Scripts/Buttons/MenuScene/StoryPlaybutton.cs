@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoryPlaybutton : MonoBehaviour
 {
-    public void Move_StoryScene()
+    public void MoveStoryScene()
     {
         CustomSceneManager.Instance.LoadScene("05_StoryScene");
     }

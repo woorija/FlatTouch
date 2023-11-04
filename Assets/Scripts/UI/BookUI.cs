@@ -10,13 +10,13 @@ public class BookUI : MonoBehaviour
     [SerializeField] GameObject[] Bookmark;
     [SerializeField] GameObject[] Silhouette;
     [SerializeField] Button currentPage;
-    bool b_isStage;
+    bool isStage;
 
     int current_select_number;
 
-    public void BookOpen(bool isStage)
+    public void BookOpen(bool _isStage)
     {
-        b_isStage= isStage;
+        isStage= _isStage;
         Book.SetActive(true);
         currentPage.onClick.RemoveAllListeners();
         title_text.text = null;
@@ -59,7 +59,7 @@ public class BookUI : MonoBehaviour
     void SelectPage()
     {
         currentPage.onClick.RemoveAllListeners();
-        if(b_isStage)
+        if(isStage)
         {
             title_text.text = "STAGE\n" + current_select_number;
             currentPage.onClick.AddListener(() => CustomSceneManager.Instance.LoadScene("04_StageScene"));
@@ -88,13 +88,13 @@ public class BookUI : MonoBehaviour
 
     int GetClearInformation()
     {
-        if (b_isStage)
+        if (isStage)
         {
-            return GameManager.Instance.story_cleared;
+            return GameManager.Instance.storyCleared;
         }
         else
         {
-            return GameManager.Instance.stage_cleared - 1;
+            return GameManager.Instance.stageCleared - 1;
         }
     }
 }

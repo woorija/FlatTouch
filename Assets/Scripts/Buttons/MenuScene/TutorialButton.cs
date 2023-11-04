@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialButton : MonoBehaviour
 {
-    public void Move_TutorialScene()
+    public void MoveTutorialScene()
     {
         CustomSceneManager.Instance.LoadScene("07_TutorialScene");
     }

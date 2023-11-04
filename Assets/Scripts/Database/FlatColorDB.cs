@@ -11,10 +11,10 @@ public struct Colordata
 
 public class FlatColorDB : MonoBehaviour
 {
-    public Color Perfect_color { get; private set; } = Color.blue;
-    public Color Good_color { get; private set; } = Color.green;
-    public Color Miss_color { get; private set; } = new Color(139 / 255f, 0, 1);
-    public Color Start_color { get; private set; } = new Color(0, 0, 0, 0);
+    public Color PerfectColor { get; private set; } = Color.blue;
+    public Color GoodColor { get; private set; } = Color.green;
+    public Color MissColor { get; private set; } = new Color(139 / 255f, 0, 1);
+    public Color StartColor { get; private set; } = new Color(0, 0, 0, 0);
 
     public Colordata[] ColorList; // 인스펙터로 컬러 생성
 
@@ -37,20 +37,20 @@ public class FlatColorDB : MonoBehaviour
     {
         for (int index = 0; index < ColorIndex.Length; index++)
         {
-            int random_Index = Random.Range(index, ColorIndex.Length);
+            int randomIndex = Random.Range(index, ColorIndex.Length);
             int temp = ColorIndex[index];
-            ColorIndex[index] = ColorIndex[random_Index];
-            ColorIndex[random_Index] = temp;
+            ColorIndex[index] = ColorIndex[randomIndex];
+            ColorIndex[randomIndex] = temp;
         }
     }
     public void RGBShuffle()
     {
         for (int index = 0; index < RGBColorIndex.Length; index++)
         {
-            int random_Index = Random.Range(index, RGBColorIndex.Length);
+            int randomIndex = Random.Range(index, RGBColorIndex.Length);
             int temp = RGBColorIndex[index];
-            RGBColorIndex[index] = RGBColorIndex[random_Index];
-            RGBColorIndex[random_Index] = temp;
+            RGBColorIndex[index] = RGBColorIndex[randomIndex];
+            RGBColorIndex[randomIndex] = temp;
         }
     }
     

@@ -2283,7 +2283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26542fbc43fb3ba4783da479ff6a1cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeImage: {fileID: 494874573}
+  fadeImage: {fileID: 494874573}
 --- !u!4 &1841485538
 Transform:
   m_ObjectHideFlags: 0

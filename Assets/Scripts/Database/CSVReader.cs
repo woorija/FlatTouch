@@ -7,7 +7,7 @@ public class CSVReader
     public static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r"; // 줄바꿈 정규식
     public static char[] TRIM_CHARS = { '\"' }; //큰따옴표체크
 
-    public static string[] Line_Split(string _file)
+    public static string[] LineSplit(string _file)
     {
         TextAsset data = Resources.Load<TextAsset>("CSV/" + _file); //csv불러오기
 
@@ -15,7 +15,7 @@ public class CSVReader
 
         return lines;
     }
-    static string Data_Trim(string _data)
+    static string DataTrim(string _data)
     {
         string value = _data;
         value = value.TrimStart(TRIM_CHARS).TrimEnd(TRIM_CHARS).Replace("\\", ""); //공백제거
@@ -25,7 +25,7 @@ public class CSVReader
     }
 
     public static int GetIntData(string _data){
-        string value = Data_Trim(_data);
+        string value = DataTrim(_data);
         int n;
         if (int.TryParse(value, out n)) //int형변환
         {
@@ -36,7 +36,7 @@ public class CSVReader
 
     public static float GetFloatData(string _data)
     {
-        string value = Data_Trim(_data);
+        string value = DataTrim(_data);
         float f;
         if (float.TryParse(value, out f)) //int형변환
         {
@@ -46,7 +46,7 @@ public class CSVReader
     }
     public static bool GetBoolData(string _data)
     {
-        string value = Data_Trim(_data);
+        string value = DataTrim(_data);
         bool b;
         if (bool.TryParse(value, out b)) //int형변환
         {
@@ -57,6 +57,6 @@ public class CSVReader
 
     public static string GetStringData(string _data)
     {
-        return Data_Trim(_data);
+        return DataTrim(_data);
     }
 }

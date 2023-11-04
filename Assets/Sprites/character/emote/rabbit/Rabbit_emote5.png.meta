@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rabbit_emote5
+      name: Rabbit_Emote5
       rect:
         serializedVersion: 2
         x: 30
@@ -125,7 +125,7 @@ TextureImporter:
         width: 293
         height: 743
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,6 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Rabbit_Emote5: 1240432009
       Rabbit_emote5_0: 1240432009
   spritePackingTag: 
   pSDRemoveMatte: 0

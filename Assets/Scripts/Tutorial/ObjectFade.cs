@@ -10,7 +10,7 @@ public class ObjectFade : MonoBehaviour
     TMP_Text text;
     bool isIncrease;
     float alpha;
-    Color Fade_color;
+    Color fadeColor;
 
     float variation;
     private void Awake()
@@ -20,7 +20,7 @@ public class ObjectFade : MonoBehaviour
         alpha = 1f;
         variation = 0.03f;
         isIncrease = false;
-        Fade_color = Color.red;
+        fadeColor = Color.red;
     }
     private void Update()
     {
@@ -34,11 +34,11 @@ public class ObjectFade : MonoBehaviour
         }
         else
         {
-            decreaseFade();
+            DecreaseFade();
         }
-        Fade_color.a = alpha;
-        if(image != null) image.color = Fade_color;
-        if(text!=null) text.color = Fade_color;
+        fadeColor.a = alpha;
+        if(image != null) image.color = fadeColor;
+        if(text!=null) text.color = fadeColor;
     }
     void IncreaseFade()
     {
@@ -49,7 +49,7 @@ public class ObjectFade : MonoBehaviour
             isIncrease = false;
         }
     }
-    void decreaseFade()
+    void DecreaseFade()
     {
         alpha -= variation;
         if (alpha < 0f)
