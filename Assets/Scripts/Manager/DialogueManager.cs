@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] PortraitUI portraitUI;
     [SerializeField] DialogueUI dialogueUI;
 
-    public static bool b_IsTypingEnd; // 타 스크립트에서 클릭 제어를 하기 위한 변수
+    public static bool isTypingEnd; // 타 스크립트에서 클릭 제어를 하기 위한 변수
     
     int index;
     DialogueData currentData;
@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     }
     void SetDialogueData()
     {
-        b_IsTypingEnd = false;
+        isTypingEnd = false;
         currentData = DialogueDB.dialogueData[index];
         portraitUI.GetPortrait(currentData.characterNumber);
         if (currentData.characterNumber != 6) // 마법봉 이펙트가 아닐경우
@@ -45,7 +45,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (GameManager.Instance.isTouchable)
         {
-            if (b_IsTypingEnd)
+            if (isTypingEnd)
             {
                 index++;
                 if (DialogueDB.dialogueData.ContainsKey(index))

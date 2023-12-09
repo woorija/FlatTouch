@@ -17,6 +17,7 @@ public class FadeObjectController : MonoBehaviour
      *    7:무지개패턴 답안
      *    8:단일색상패턴 답안
      *    9:역무지개패턴 답안
+     *    10:PC키
      */
     void SetActiveTrue(int _index)
     {
@@ -42,10 +43,10 @@ public class FadeObjectController : MonoBehaviour
                 SetActiveFalse(1);
                 break;
             case 5:
-            case 10:
-            case 16:
-            case 22:
-            case 28:
+            case 11:
+            case 17:
+            case 23:
+            case 29:
                 SetActiveTrue(1);
                 break;
             case 6:
@@ -53,50 +54,54 @@ public class FadeObjectController : MonoBehaviour
                 SetActiveTrue(5);
                 break;
             case 7:
-                SetActiveTrue(2);
+                SetActiveTrue(10);
                 break;
             case 8:
+                SetActiveTrue(2);
+                SetActiveFalse(10);
+                break;
+            case 9:
                 SetActiveFalse(5);
                 SetActiveFalse(2);
                 break;
-            case 11:
+            case 12:
                 SetActiveFalse(1);
                 SetActiveTrue(4);
                 SetActiveTrue(6);
                 break;
-            case 12:
+            case 13:
                 SetActiveTrue(3);
                 SetActiveFalse(4);
                 SetActiveFalse(6);
                 break;
-            case 13:
-            case 19:
+            case 14:
+            case 20:
                 SetActiveFalse(3);
                 break;
-            case 17:
+            case 18:
                 SetActiveFalse(1);
                 SetActiveTrue(7);
                 break;
-            case 18:
+            case 19:
                 SetActiveFalse(7);
                 SetActiveTrue(3);
                 break;
-            case 23:
+            case 24:
                 SetActiveFalse(1);
                 SetActiveTrue(8);
                 break;
-            case 24:
+            case 25:
                 SetActiveFalse(8);
                 SetActiveTrue(2);
                 break;
-            case 25:
+            case 26:
                 SetActiveFalse(2);
                 break;
-            case 29:
+            case 30:
                 SetActiveFalse(1);
                 SetActiveTrue(9);
                 break;
-            case 30:
+            case 31:
                 SetActiveFalse(9);
                 break;
             default:

@@ -45,7 +45,7 @@ public class MagicUI : MonoBehaviour
 
         Magic.gameObject.SetActive(false);
         MagicBG.gameObject.SetActive(false);
-        DialogueManager.b_IsTypingEnd = true;
+        DialogueManager.isTypingEnd = true;
         GameManager.Instance.TouchUnlock();
     }
 }

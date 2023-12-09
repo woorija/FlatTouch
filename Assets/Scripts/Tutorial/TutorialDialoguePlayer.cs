@@ -19,6 +19,7 @@ public class TutorialDialoguePlayer : MonoBehaviour
         string.Empty,
         "처음으로 알아볼 패턴은\n기본 패턴입니다.",
         "기본패턴은 같은 색상을 가진\n플랫 2개를 찾아\n동시에 터치하는 패턴입니다.",
+        "PC로 플레이 하실 경우\n키패드 1~9 또는\nqwe,asd,zxc키를 눌러주세요",
         "타이밍바가 중앙에 근접할수록\n높은 점수를 얻을 수 있습니다.",
         "그럼 직접 플레이 해보겠습니다.",
         string.Empty,
@@ -49,7 +50,7 @@ public class TutorialDialoguePlayer : MonoBehaviour
         "부디 모든 색을 되찾기를 기원합니다.",
         string.Empty
     };
-    public static bool b_IsTypingEnd; // 타 스크립트에서 클릭 제어를 하기 위한 변수
+    public static bool isTypingEnd; // 타 스크립트에서 클릭 제어를 하기 위한 변수
     int index = -1;
     public void StartDialogue(int _index)
     {
@@ -59,7 +60,7 @@ public class TutorialDialoguePlayer : MonoBehaviour
     }
     void SetDialogueData()
     {
-        b_IsTypingEnd = false;
+        isTypingEnd = false;
         dialogueUI.GetDialogueText(tutorialInformation[index]);
         SetDialoguePos();
         objectController.SetActiveObject(index);
@@ -67,7 +68,7 @@ public class TutorialDialoguePlayer : MonoBehaviour
     }
     public void PlayingDialogue()
     {
-        if (b_IsTypingEnd)
+        if (isTypingEnd)
         {
             index++;
             if (!tutorialInformation[index].Equals(string.Empty))
@@ -92,18 +93,18 @@ public class TutorialDialoguePlayer : MonoBehaviour
         switch (index)
         {
             case 0:
-            case 8:
-            case 13:
-            case 19:
-            case 25:
-            case 30:
+            case 9:
+            case 14:
+            case 20:
+            case 26:
+            case 31:
                 dialogueUIRectTransform.anchoredPosition = Vector2.zero;
                 break;
             case 6:
-            case 11:
-            case 17:
-            case 23:
-            case 29:
+            case 12:
+            case 18:
+            case 24:
+            case 30:
                 dialogueUIRectTransform.anchoredPosition = DialoguePos;
                 break;
             default:

@@ -15,8 +15,8 @@ public class PopupLogo : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("FirstPlay", 0) == 0)
         {
-            //CustomSceneManager.Instance.LoadScene("01_IntroScene");
-            CustomSceneManager.Instance.LoadScene("02_TitleScene");
+            CustomSceneManager.Instance.LoadScene("01_IntroScene");
+            //CustomSceneManager.Instance.LoadScene("02_TitleScene");
             //CustomSceneManager.Instance.LoadScene("07_TutorialScene");
         }
         else

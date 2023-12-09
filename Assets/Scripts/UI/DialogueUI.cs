@@ -47,15 +47,15 @@ public class DialogueUI : MonoBehaviour
             yield return new WaitForSeconds(0.07f);
         }
         dialogueBuilder.Clear();
-        DialogueManager.b_IsTypingEnd = true;
-        TutorialDialoguePlayer.b_IsTypingEnd = true;
+        DialogueManager.isTypingEnd = true;
+        TutorialDialoguePlayer.isTypingEnd = true;
     }
     public void DialogueSkip()
     {
         StopCoroutine(typingCoroutine);
         dialogueBuilder.Clear();
         SetOriginDialogue();
-        DialogueManager.b_IsTypingEnd = true;
-        TutorialDialoguePlayer.b_IsTypingEnd = true;
+        DialogueManager.isTypingEnd = true;
+        TutorialDialoguePlayer.isTypingEnd = true;
     }
 }

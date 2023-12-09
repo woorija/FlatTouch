@@ -65,23 +65,23 @@ public class TutorialManager : StageManager
                     break;
                 case 5:
                     GameManager.Instance.TouchLock();
-                    DialoguePlayer.StartDialogue(10);
+                    DialoguePlayer.StartDialogue(11);
                     break;
                 case 7:
                     GameManager.Instance.TouchLock();
-                    DialoguePlayer.StartDialogue(15);
+                    DialoguePlayer.StartDialogue(16);
                     break;
                 case 9:
                     GameManager.Instance.TouchLock();
-                    DialoguePlayer.StartDialogue(21);
+                    DialoguePlayer.StartDialogue(22);
                     break;
                 case 11:
                     GameManager.Instance.TouchLock();
-                    DialoguePlayer.StartDialogue(27);
+                    DialoguePlayer.StartDialogue(28);
                     break;
                 case 13:
                     GameManager.Instance.TouchLock();
-                    DialoguePlayer.StartDialogue(32);
+                    DialoguePlayer.StartDialogue(33);
                     break;
                 case 14:
                     TutorialEnd();

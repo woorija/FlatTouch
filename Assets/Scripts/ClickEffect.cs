@@ -25,12 +25,12 @@ public class ClickEffect : SingletonBehaviour<ClickEffect>
     }
     void Touch()
     {
-    #if UNITY_EDITOR
+#if !UNITY_ANDROID
         if (Input.GetMouseButtonDown(0))
         {
             Play_ClickEffect(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
-    #endif
+#endif
         if (Input.touchCount > 0) // 하나 이상의 터치 입력이 있을 경우
         {
             for (int i = 0; i < Input.touchCount; i++)
