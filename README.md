@@ -56,7 +56,7 @@
    ```bash
    git clone https://github.com/woorija/FlatTouch.git
    ```
-4. Unity Hub에서 프로젝트 실행 후 빌드한다.
+4. Unity Hub에서 프로젝트를 실행한다.
    
 ## 게임 실행
  1. [다운로드](https://drive.google.com/drive/folders/1uLXfXuIa-yeTxubEFT-_eFSeokQJmhse)
